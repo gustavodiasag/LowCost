@@ -1,0 +1,347 @@
+/*geral*/
+    body{
+        color:  #41a87f;
+      
+    }
+
+    .botao-padrao{
+        background-color: #a2d376;
+        color: #f2f2f2;
+        border-color: #a2d376;
+    }
+
+    .botao-padrao:hover{
+        background-color: #41a87b;
+        color: #f2f2f2;
+        border-color: #a2d376;
+    }
+
+    h1, h2{
+        margin-bottom: 25px;
+    }
+
+    .alinha{
+        margin-top: 20px;
+    }
+/*geral*/
+
+
+
+
+/*cabeçalho*/
+    header{
+      padding: 30px;
+      background-color: #3c3250;
+-webkit-box-shadow: -11px 10px 16px 1px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: -11px 10px 16px 1px rgba(0, 0, 0, 0.1);
+box-shadow: -11px 10px 16px 1px rgba(0, 0, 0, 0.3);
+transition: all 0.2s ease;
+box-sizing: border-box;
+    }
+
+.navbar.brand {
+    position: absolute;
+  width: 60px;
+    left: 50%;
+    margin-left: -131px !important; 
+    display: block;
+}
+
+
+
+    .botao{
+        margin-left: 10px;
+        color: #a7f765;
+        border-color: #a7f765;
+    }
+
+    .botao:hover{
+        background-color: #a7f765;
+        color: #ffffff;
+        border-color: #a7f765;
+    }
+.navbar navbar-expand-md fixed-top menu-area{
+  color: #3c3250;
+}
+    .memu_area{
+      color: #3c3250;
+        margin-top: 30px;
+    }
+
+    .memu_area nav a{
+        color:#41a87b;
+      font-weight:bold;
+
+        margin-bottom: 10px;
+    }
+
+    .memu_area nav a:hover{
+        font-weight: bolder;
+      color: #a2d376;
+    }
+
+
+    .nav-item-compare{
+      background-color: #41a87b;
+        margin-left: 3rem;
+        color: #a2d376 !important;
+    
+    }
+
+    main{
+        padding-top: 100px;
+      padding-bottom: 100px;
+    }
+
+    .logo{
+        width: 120px;
+    }
+
+	.more{
+        width: 25px;
+        margin-top: 7px;
+    }
+    
+    .perfil{
+        width: 40px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .texto{
+      margin-bottom: 10px;
+      color: #a2d376;
+    }
+
+    .texto:hover{
+      color:#41a87b;
+      font-weight: bold;
+    }
+
+    .texto_drop{
+      color:#41a87b;
+      font-weight: bold;
+    }
+/*cabeçalho*/
+
+
+/*Home Page*/
+    .info-pages{
+        padding: 20px;
+        background-color: #f2f2f2;
+    }
+
+    .info-pages h1{
+        text-align: center;
+    }
+
+    .img_info{
+        width: 500px ;
+        height: 300px;
+        margin: 20px;
+    }
+    .img_infol{
+        width: 500px ;
+        height: 400px;
+        margin: 20px;
+    }
+
+    .card{
+        margin-bottom: 20px;
+    }
+
+    .destaque{
+        padding: 30px;
+    }
+/*Home Page*/
+
+/*Sobre*/
+    .baixo h1{
+        margin-top: 20px;
+    }
+
+    .redes i{
+        color: white;
+        margin-right: 10px;
+    }
+/*Sobre*/
+
+/*Negocie*/
+    .fale img{
+        width: 50px;
+        margin-top: 20px;
+    }
+
+    .email{
+        margin-left: 20px;
+    }
+
+    .digite{
+        margin-right: 40px;
+    }
+
+    .p-perfil{
+        margin-left: 10px;
+        margin-top: 30px;
+    }
+
+    .alinha-2{
+        margin-left: 350px;
+    }
+
+    .send-message{
+        padding: 20px;
+    }
+/*Negocie*/
+
+.btn-pink {
+	border-radius: 2;
+	background-color: #a2d376;
+	color: #fff !important;
+  font-family: 'Open Sans';
+  font-style: bold;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 12px;
+  /* or 100% */
+  
+  text-align: center;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+ 	letter-spacing: 2px;
+	padding: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.btn-pink:hover {
+	background-color: #3c3250;
+}
+
+/*tabelas*/
+table {
+  border-collapse: collapse;
+  
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #a2d376;
+                  color: white;}
+
+th {
+  background-color: #41a87b;
+  color: white;
+  
+}
+
+
+/*roda pé*/
+footer{
+  background-color: #41a87b;
+  color: #ffffff
+}
+.menu-area{
+    background-color:#3c3250;
+}
+/*roda pé*/
+
+
+
+ .socials{
+    list-style: none;
+    display: flex;
+    align-items: center !important;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+.socials li{
+    margin: 0 10px;
+}
+.socials a{
+    text-decoration: none;
+    color: #fff;
+    border: 1.1px solid white;
+    padding: 5px;
+
+    border-radius: 50%;
+
+}
+.socials a i{
+    font-size: 1.1rem;
+    width: 20px;
+
+
+    transition: color .4s ease;
+
+}
+.socials a:hover i{
+  color: #a2d376;
+}
+
+.sistema .container header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.sistema .container header h1 {
+  margin-top: 2rem;
+  color: var(--blue-800);
+  font-size: 2rem;
+}
+
+.sistema .container header button {
+  margin-top: 1rem;
+}
+
+.sistema .container table {
+  width: 100%;
+  margin-top: 2rem;
+  
+}
+
+.sistema .container table thead th {
+  padding: 1rem;
+  color: var(--blue-800);
+  font-size: 0.8rem;
+  text-align: left;
+  position: relative;
+}
+
+.sistema .container table thead th::after {
+  content: "";
+  width: calc(100% + 2px);
+  height: 1px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: var(--blue-800);
+}
+
+.sistema .container table tbody tr td {
+  padding: 1rem;
+  position: relative;
+  color: var(--blue-800);
+}
+
+.sistema .container table tbody tr td::after {
+  content: "";
+  width: calc(100% + 2px);
+  height: 1px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: var(--blue-500);
+}
+
+.sistema .container > button {
+  margin-top: 1rem;
+}

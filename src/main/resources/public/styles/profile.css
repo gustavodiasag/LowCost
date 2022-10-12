@@ -1,0 +1,347 @@
+:root {
+  --blue-50: white;
+  --blue-100: #41a87b;
+  --blue-500: #a2d376;
+  --blue-800: white;
+  --gray-100: #3c3250;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: var(--blue-50);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: bold;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: white;
+}
+
+button,
+input[type="submit"],
+input[type="file"],
+select {
+  cursor: pointer;
+}
+
+[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.hide {
+  display: none !important;
+}
+
+.error-message,
+.success-message {
+  display: block;
+  font-weight: bold;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: white;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  border: 1px solid var(--gray-100);
+  color: #3c3250;
+  background-color: var(--blue-50);
+  font-size: 0.8rem;
+  font-weight: bold;
+  outline: none;
+}
+
+.input:focus,
+.input:hover {
+  border: 1px solid var(--blue-500);
+}
+
+.input::placeholder {
+  color: #737373;
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  padding: 1rem 3rem;
+  background: var(--blue-500);
+  border: none;
+  box-shadow: inset 0px -4px 0px rgba(0, 0, 0, 0.0908818);
+  font-weight: 500;
+  border-radius: 50px;
+  transition: 0.2s;
+  color: white;
+}
+
+.button:hover {
+  color: #3c3250;
+  box-shadow: inset 0px -4px 0px rgba(0, 0, 0, 0.0908818);
+}
+
+@media (min-width: 780px) {
+  .modal-overlay {
+    top: 100px;
+  }
+}
+@media (max-width: 780px) {
+  .modal-overlay {
+    top: 50px;
+  }
+}
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  width: fit-content;
+  height: fit-content;
+
+  background: #f0f2f5;
+  padding: 2.4rem;
+  position: relative;
+  z-index: 1;
+  border-radius: 50px;
+  display: block;
+}
+
+.modal .close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--blue-800);
+  font-weight: bold;
+}
+
+#form {
+  max-width: px;
+}
+
+#form h2 {
+  margin-top: 0;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0.2rem;
+  border: none;
+}
+
+.input-group {
+  margin-top: 0.8rem;
+}
+
+.input-group small {
+  opacity: 0.4;
+}
+
+.input-group.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login {
+  width: 100%;
+  /* width: 100vw; */
+  height: 100vh;
+  background: var(--blue-50);
+}
+
+.login .login-wrapper {
+  width: 100%;
+  max-width: 500px;
+  /* position: absolute;
+    left: 50%;
+    top: 50%; */
+  /* transform: translate(-50%, -50%); */
+  padding: 1rem 3rem;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: var(--blue-100);
+}
+
+.login .login-wrapper h1 {
+  color: var(--blue-800);
+  text-align: center;
+  font-size: 2rem;
+}
+
+.login .login-wrapper input {
+  margin-top: 2rem;
+}
+
+.login .login-wrapper .button-wrapper {
+  margin-top: 2rem;
+}
+
+.login .login-wrapper .button-wrapper.b2 {
+  margin-top: 0.5rem;
+}
+
+.login .login-wrapper > p {
+  margin-top: 2rem;
+  color: var(--blue-800);
+  text-align: center;
+}
+
+.login .modal {
+  background-color: var(--blue-100);
+}
+
+.login .modal h2 {
+  text-align: center;
+  color: var(--blue-800);
+}
+
+.login .modal .button-wrapper {
+  margin-top: 1rem;
+}
+
+.sistema .container header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sistema .container header h1 {
+  margin-top: 2rem;
+  color: var(--blue-800);
+  font-size: 2rem;
+}
+
+.sistema .container header button {
+  margin-top: 1rem;
+}
+
+.sistema .container table {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.sistema .container table thead th {
+  padding: 1rem;
+  color: var(--blue-800);
+  font-size: 0.8rem;
+  text-align: left;
+  position: relative;
+}
+
+.sistema .container table thead th::after {
+  content: "";
+  width: calc(100% + 2px);
+  height: 1px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: var(--blue-800);
+}
+
+.sistema .container table tbody tr td {
+  padding: 1rem;
+  position: relative;
+  color: var(--blue-800);
+}
+
+.sistema .container table tbody tr td::after {
+  content: "";
+  width: calc(100% + 2px);
+  height: 1px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: var(--blue-500);
+}
+
+.sistema .container > button {
+  margin-top: 1rem;
+}
