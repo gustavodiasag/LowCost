@@ -28,7 +28,7 @@ public class Forum {
 	public int getId() { return this.id; }
 	public int getComments() { return this.comments; }
 	public int getUserId() { return this.userId; }
-	public String getTitile() { return this.title; }
+	public String getTitle() { return this.title; }
 	
 	@Override
 	public String toString() {

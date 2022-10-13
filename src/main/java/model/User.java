@@ -5,7 +5,7 @@ public class User {
 	private int id, contributions;
 	private String name, login, password, email;
 	
-	public User( ) {
+	public User() {
 		
 		id = -1;
 		name = "";

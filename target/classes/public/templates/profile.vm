@@ -107,7 +107,9 @@
         <p>Não possui uma conta?</p>
 
         <div class="button-wrapper b2">
-          <button class="button" data-modal="open">Criar conta</button>
+          <a href="/signup/">
+          	<button class="button">Criar conta</button>
+          </a>
         </div>
       </div>
 
