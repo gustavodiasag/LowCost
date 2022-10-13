@@ -55,7 +55,8 @@ public class UserDAO extends DAO {
 			
 			st.close();
 			
-		} catch (Exception e) { System.err.println(e.getMessage()); }
+			} 
+		}catch (Exception e) { System.err.println(e.getMessage()); }
 		
 		return user;
 	}

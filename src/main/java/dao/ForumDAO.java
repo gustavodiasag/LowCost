@@ -18,7 +18,7 @@ public class ForumDAO extends DAO {
 
 			String sql = "INSERT INTO forum (comments, title, user_id) VALUES ("
 						 + forum.getComments() + ", '"
-						 + forum.getTitle() + ", "
+						 + forum.getTitile() + ", "
 						 + forum.getUserId() + ");";
 
 			PreparedStatement st = connection.prepareStatement(sql);
@@ -63,7 +63,7 @@ public class ForumDAO extends DAO {
 		try {
 
 			String sql = "UPDATE forum SET comments = " + forum.getComments()
-						 + ", title = '" + forum.getTitle()
+						 + ", title = '" + forum.getTitile()
 						 + "', user_id = " + forum.getUserId()
 						 + " WHERE id = " + forum.getId();
 
@@ -79,7 +79,7 @@ public class ForumDAO extends DAO {
 		return status;
 	}
 
-	public bolean delete(int id) {
+	public boolean delete(int id) {
 
 		boolean status = false;
 

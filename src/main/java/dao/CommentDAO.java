@@ -1,6 +1,6 @@
 package dao;
 
-import model.User;
+import model.Comment;
 
 import java.sql.*;
 
@@ -79,7 +79,7 @@ public class CommentDAO extends DAO {
 
 			PreparedStatement st = connection.prepareStatement(sql);
 			
-			st.setTimeStamp(1, Timestamp.valueOf(comment.getSubmission()));
+			st.setTimestamp(1, Timestamp.valueOf(comment.getSubmission()));
 			st.executeUpdate();
 			st.close();
 

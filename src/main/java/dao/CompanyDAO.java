@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class CompanyDAO extends DAO {
 	
-	public CompanyDAO() { super(); connec(); }
+	public CompanyDAO() { super(); connect(); }
 
 	public void finalize() { close(); }
 
@@ -36,7 +36,7 @@ public class CompanyDAO extends DAO {
 
 		try {
 
-			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONY);
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
 			String sql = "SELECT * FROM company WHERE id = " + id;
 
@@ -57,7 +57,7 @@ public class CompanyDAO extends DAO {
 
 		try {
 
-			String sql = "UPDATE company SET name = '" + company.getName() + "' WHERE id = " + comany.getId();
+			String sql = "UPDATE company SET name = '" + company.getName() + "' WHERE id = " + company.getId();
 
 			PreparedStatement st = connection.prepareStatement(sql);
 

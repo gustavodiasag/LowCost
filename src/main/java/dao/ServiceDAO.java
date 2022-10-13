@@ -90,7 +90,7 @@ public class ServiceDAO extends DAO {
 
 			status = true;
 
-		} catch (SQLException e) { throw new RuntimeExeption(e); }
+		} catch (SQLException e) { throw new RuntimeException(e); }
 
 		return status;
 	}
