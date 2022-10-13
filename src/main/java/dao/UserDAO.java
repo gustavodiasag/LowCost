@@ -47,9 +47,11 @@ public class UserDAO extends DAO {
 			
 			if (rs.next()) {
 				
-				user = new User(rs.getString("name"), rs.getString("login"), rs.getString("password"),
-						   		  rs.getString("email"), rs.getInt("contributions"));
-			}
+				user = new User(rs.getString("name"),
+								rs.getString("login"),
+								rs.getString("password"),
+						   		rs.getString("email"),
+								rs.getInt("contributions"));
 			
 			st.close();
 			
