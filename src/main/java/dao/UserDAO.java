@@ -16,7 +16,7 @@ public class UserDAO extends DAO {
 		
 		try {
 			
-			String sql = "INSERT INTO user (name, login, password, email, contributions) "
+			String sql = "INSERT INTO \"public\".user (name, login, password, email, contributions) "
 						 + "VALUES ('" + user.getName() + "', '" + user.getLogin()
 						 + "', MD5('"  + user.getPassword() + "'), '" + user.getEmail()
 						 + "', " + user.getContributions() + ");";
@@ -56,6 +56,18 @@ public class UserDAO extends DAO {
 		} catch (Exception e) { System.err.println(e.getMessage()); }
 		
 		return user;
+	}
+	
+	public boolean getToAuth(String login, String password) {
+		
+		User user = null;
+		
+		try {
+			
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			
+			String sql = "SELECT * FROM \"public\".user WHERE login = '" + login + "AND MD5('" + password
+		}
 	}
 
 	public boolean update(User user) {
