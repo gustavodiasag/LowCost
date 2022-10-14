@@ -41,7 +41,7 @@ public class UserDAO extends DAO {
 			
 			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			
-			String sql = "SELECT * FROM user WHERE id = " + id;
+			String sql = "SELECT * FROM \"public\".user WHERE id = " + id;
 			
 			ResultSet rs = st.executeQuery(sql);
 			
@@ -58,7 +58,7 @@ public class UserDAO extends DAO {
 		return user;
 	}
 	
-	public boolean getToAuth(String login, String password) {
+	public User check(String login) {
 		
 		User user = null;
 		
@@ -66,10 +66,26 @@ public class UserDAO extends DAO {
 			
 			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			
-			String sql = "SELECT * FROM \"public\".user WHERE login = '" + login + "AND MD5('" + password
-		}
+			String sql = "SELECT * FROM \"public\".user WHERE login = '" + login + "';";
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+			if (rs.next()) {
+				
+				user = new User(rs.getString("name"),
+								rs.getString("login"),
+								rs.getString("password"),
+								rs.getString("email"),
+								rs.getInt("contributions"));
+			}
+			
+			st.close();
+			
+		} catch (Exception e) { System.err.println(e.getMessage()); }
+		
+		return user;
 	}
-
+	
 	public boolean update(User user) {
 		
 		boolean status = false;

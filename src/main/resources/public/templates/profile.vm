@@ -88,15 +88,15 @@
 
     <section class="login">
       <div class="login-wrapper">
-        <form class="form-wrapper" data-form="login">
+        <form class="form-wrapper" data-form="login" method="post" action="/profile/">
           <h1>LOGIN</h1>
           <span data-form="error" class="error-message hide">Usuário ou senha inválidos</span>
           <div class="input-wrapper" data-form="nameWrapper">
-            <input data-login="login" type="text" class="input" placeholder="Login" data-form="loginInput" required="">
+            <input data-login="login" name="login" type="text" class="input" placeholder="Login" data-form="loginInput" required="">
           </div>
 
           <div class="input-wrapper" data-form="passwordWrapper">
-            <input data-login="password" type="password" class="input" placeholder="Password" data-form="passwordInput" required="">
+            <input data-login="password" name="password" type="password" class="input" placeholder="Password" data-form="passwordInput" required="">
           </div>
 
           <div class="button-wrapper">

@@ -5,8 +5,6 @@ import model.User;
 
 import spark.Request;
 import spark.Response;
-import spark.ModelAndView;
-import spark.template.velocity.*;
 
 import java.util.HashMap;
 
@@ -18,7 +16,7 @@ public class UserService {
 	
 	public UserService() {}
 	
-	public int insert(Request request, Response response) {
+	public String insert(Request request, Response response) {
 		
 		String name = request.queryParams("name");
 		String login = request.queryParams("login");
@@ -27,16 +25,20 @@ public class UserService {
 		
 		User user = new User(name, login, password, email, 0);
 		
-		if (userDAO.insert(user)) return user.getId();
+		if (userDAO.insert(user)) return user.getLogin();
 		
-		return -1;
+		return null;
 	}
 	
-	public boolean getToAuth(Request request, Response response) {
+	public String check(Request request, Response response) {
 		
 		String login = request.queryParams("login");
 		String password = request.queryParams("password");
 		
-		return userDAO.getToAuth(login, password);
+		User user = userDAO.check(login);
+		
+		if (user.getPassword().compareTo(password) == 0) return user.getLogin();
+		
+		return null;
 	}
 }

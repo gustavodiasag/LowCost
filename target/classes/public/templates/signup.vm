@@ -15,7 +15,7 @@
           <div id="form">
           <h2  style="margin-left: 20px;">Novo usuário</h2>
           
-            <form data-form="create" action="/signup/insert" method="post"">
+            <form data-form="create" action="/signup/" method="post">
               <div class="input-group">
                 <input data-create="name" class="input" type="text" id="nome" name="name" placeholder="Nome" required="">
               </div>

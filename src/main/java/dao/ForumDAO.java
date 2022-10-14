@@ -16,7 +16,7 @@ public class ForumDAO extends DAO {
 
 		try {
 
-			String sql = "INSERT INTO forum (comments, title, user_id) VALUES ("
+			String sql = "INSERT INTO forum (comments, title, user_id_fk) VALUES ("
 						 + forum.getComments() + ", '"
 						 + forum.getTitle() + ", "
 						 + forum.getUserId() + ");";
@@ -46,7 +46,7 @@ public class ForumDAO extends DAO {
 			ResultSet rs = st.executeQuery(sql);
 
 			if (rs.next()) forum = new Forum(rs.getInt("comments"),
-											 rs.getInt("user_id"),
+											 rs.getInt("user_id_fk"),
 											 rs.getString("title"));
 
 			st.close();
@@ -64,7 +64,7 @@ public class ForumDAO extends DAO {
 
 			String sql = "UPDATE forum SET comments = " + forum.getComments()
 						 + ", title = '" + forum.getTitle()
-						 + "', user_id = " + forum.getUserId()
+						 + "', user_id_fk = " + forum.getUserId()
 						 + " WHERE id = " + forum.getId();
 
 			PreparedStatement st = connection.prepareStatement(sql);

@@ -16,7 +16,7 @@ public class CommentDAO extends DAO {
 
 		try {
 
-			String sql = "INSERT INTO comment (content, user_id, service_id, forum_id) VALUES ('"
+			String sql = "INSERT INTO \"public\".comment (content, user_id, service_id, forum_id) VALUES ('"
 						 + comment.getContent() + "', "
 						 + comment.getUserId() + ", "
 						 + comment.getServiceId() + ", "
@@ -43,7 +43,7 @@ public class CommentDAO extends DAO {
 
 			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			String sql = "SELECT * FROM comment WHERE user_id = " + user_id
+			String sql = "SELECT * FROM \"public\"comment WHERE user_id = " + user_id
 						 + " AND service_id = " + service_id
 						 + " AND forum_id = " + forum_id;
 
@@ -71,7 +71,7 @@ public class CommentDAO extends DAO {
 
 		try {
 
-			String sql = "UPDATE comment SET content = '" + comment.getContent()
+			String sql = "UPDATE \"public\".comment SET content = '" + comment.getContent()
 						  + "', submission = ?"
 						  + " WHERE user_id = " + comment.getUserId()
 						  + " AND service_id = " + comment.getServiceId()
@@ -98,7 +98,7 @@ public class CommentDAO extends DAO {
 				
 			Statement st = connection.createStatement();
 			
-			st.executeUpdate("DELETE FROM comment WHERE user_id = " + user_id
+			st.executeUpdate("DELETE FROM \"public\".comment WHERE user_id = " + user_id
 							 + " AND service_id = " + service_id
 							 + " AND forum_id = " + forum_id);
 			st.close();
