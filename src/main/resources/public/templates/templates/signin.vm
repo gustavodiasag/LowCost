@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="estilo.css" />
+    <link rel="stylesheet" href="styles.css" />
+     <style type="text/css" title="MiltinEstilo1" media="all">
+      * {
+        font-family: "Ubuntu", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Ubuntu", sans-serif;
+        text-align: center;
+        background-color: white;
+      }
+
+      .header > h1 {
+        color: #1c1c1c;
+        padding: 15px;
+      }
+
+      .header > p {
+        padding: 15px;
+      }
+
+      .header > img {
+        width: 200px;
+        border-radius: 10%;
+        
+        transition: 0.3s;
+        cursor: pointer;
+      }
+
+      img.ico {
+        margin-top: 15px;
+        width: 20px;
+        border-radius: 10%;
+          cursor: pointer;
+      }
+
+      img:hover {
+        cursor: pointer;
+        filter: grayscale(1);
+        border-radius: 50%;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+      }
+
+      .about {
+        background-color: #fff;
+        margin-left: 200px;
+        margin-right: 200px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+      }
+
+      .about > h1 {
+        color: #1c1c1c;
+        padding: 10px;
+        font-size: 1.25em;
+      }
+
+      .detalhes > h1 {
+        color: #41a87b;
+        padding: 10px;
+        font-size: 1.25em;
+      }
+
+      .negrito {
+        font-weight: 700;
+        color: #41a87b;
+      }
+
+      p {
+        color: #404040;
+        padding: 20px;
+      }
+    </style>
+
+ <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css/"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>LowCost</title>
+  </head>
+
+  <body>
+   <header>
+    
+    <div class="row">
+      <div class="col-12 header_area">
+        <div class="row">
+
+          <div class="col-12 col-sm-12 col-md-8 col-lg-10 memu_area">
+            <nav class="navbar navbar-expand-md fixed-top menu-area" style="color: #3c3250">
+                  <a class="navbar-brand" href="#"><img src="images/logocolor.png" class="logo dar_espaco"></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <img src="images/more.png" class="more">
+              </button>
+              <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <a class="flex-sm-fill text-sm-center nav-link" href="index.html">Home</a>
+                <div class="dropdown">
+                  <button class="btn dropdown-toggle texto" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Compare
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item texto_drop" href="public/templates/tables.vm">Tabelas</a>
+                    <a class="dropdown-item texto_drop" href="public/templates/add.vm">Adicione</a>
+                    <a class="dropdown-item texto_drop" href="public/templates/submissions.vm">Serviços</a>
+                  </div>
+                </div>
+                <a class="flex-sm-fill text-sm-center nav-link" href="public/templates/forum.vm">Fórum</a>
+
+                <a class="flex-sm-fill text-sm-center nav-link" href="Sobre.html">Sobre</a>
+                <a href="public/templates/profile.vm">
+                  <div class="perfil">
+                    <img src="images/perfil.png" class="perfil">
+                  </div>
+                </a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+   <main class="container">
+      <div class="header">
+        <h1>Perfil de <span id="name"> </span></h1>
+
+        <img class="avatar" src="./images/perfilroxo.png" alt="Avatar" />
+      </div>
+
+      <div class="detalhes">
+        <h1>Detalhes</h1>
+
+        <span class="negrito">Quantidade de serviços: </span>
+        <p id="qntServ"></p>
+    
+      </div>
+     <div class="button">
+        <h1>Deseja atualizar seus dados?</h1>
+<button class="btn-pink btn" onclick="window.location.href='#'">Atualizar</button>
+       <button class="btn-pink btn" onclick="window.location.href='#'">Deletar conta </button>
+      </div>
+
+  
+    </main>
+
+    
+    <footer>
+       <footer>
+    
+	<div class="row bottom-part">
+		<div class="d-lg-flex justify-content-between bd-highlight col-md-12 mb-5 px-5" style="margin-top: 10px;">
+			
+			<div class="p-2 row flex-fill bd-highlight justify-content-center">
+				<div class="p-2 d-lg-flex">
+					<div class="p-2 flex-fill d-flex bd-highlight">Termos e Serviços</div>
+					<div class="p-2 flex-fill d-flex bd-highlight"> © 2022 All Rights Reserved</div>
+					</div>
+          <ul class="socials">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+        </ul>
+        </div>
+		</div>
+    	</div>
+</div>
+ 
+    <script>
+      function writeStuff() {
+        const user = JSON.parse(localStorage.getItem("sistema:userInfo")).name;
+        document.getElementById("name").innerHTML = user;
+        const servs = localStorage.getItem("services");
+        let qntServs = 0;
+        if (servs) {
+          qntServs = JSON.parse(servs).filter(
+            (s) => s.user.name == user
+          ).length;
+        }
+        document.getElementById("qntServ").innerHTML = qntServs;
+      }
+      writeStuff();
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js"></script>
+  </body>
+</html>
