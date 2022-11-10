@@ -7,143 +7,89 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
+    <link rel="stylesheet"    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../styles/style.css" />
     <link rel="stylesheet" href="../styles/profile.css" />
+    <link rel="stylesheet" href="../styles/style.css" />
  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css/"/>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <title>LowCost</title>
   </head>
 
   <body>
-    <header>
-      <link
-        rel="shortcut icon"
-        type="imagem/x-icon"
-        href="../images/icon.png"
-      />
-      <div class="row">
-        <div class="col-12 header_area">
-          <div class="row">
-            <div class="col-12 col-sm-12 col-md-8 col-lg-10 memu_area">
-              <nav class="nav">
-              <a class="navbar-brand" href="/"
-                  ><img src="../images/logo.png" class="logo dar_espaco"
-                /></a>
-                   <ul class="nav navbar-justify-content-center">
-            <li class="nav-item-compare">
-              <div class="dropdown">
-                    <button class="btn dropdown-toggle texto"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Compare
-                    </button>
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item texto_drop" href="/tables/">Tabelas</a>
-                      <a class="dropdown-item texto_drop" href="#"
-                        >Adicione</a
-                      >
-                      <a class="dropdown-item texto_drop" href="/services/"
-                        >Serviços</a
-                      >
-                    </div>
+       <header>
+    
+    <div class="row">
+      <div class="col-12 header_area">
+        <div class="row">
+
+          <div class="col-12 col-sm-12 col-md-8 col-lg-10 memu_area">
+            <nav class="navbar navbar-expand-md fixed-top menu-area" style="color: #3c3250">
+                  <a class="navbar-brand" href="#"><img src="../images/logo.png" class="logo dar_espaco"></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <img src="images/more.png" class="more">
+              </button>
+              <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <a class="flex-sm-fill text-sm-center nav-link" href="/">Home</a>
+                <div class="dropdown">
+                  <button class="btn dropdown-toggle texto" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Compare
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item texto_drop" href="/tables/">Tabelas</a>
+                    <a class="dropdown-item texto_drop" href="/add/">Adicione</a>
+                    <a class="dropdown-item texto_drop" href="/services/">Serviços</a>
                   </div>
-            </li>
-            <li class="nav-item">
-              <a
-                    class="flex-sm-fill text-sm-center nav-link"
-                    href="/forum/"
-                    >Fórum</a
-                  >
-            </li>
-            <li class="nav-item">
-               <a
-                    class="flex-sm-fill text-sm-center nav-link"
-                    href="/about/"
-                    >Sobre</a
-                  >
-                  </li> </ul> 
-                 
-            <a href="/profile/">
-                    <div class="perfil">
-                      <img src="../images/profile.png" class="perfil" /> </a>
-             </div> </nav>
-            </div> </div> </div> </div> 
-    </header>
+                </div>
+                <a class="flex-sm-fill text-sm-center nav-link" href="/forum/">Fórum</a>
+
+                <a class="flex-sm-fill text-sm-center nav-link" href="/about/">Sobre</a>
+                <a href="/profile/">
+                  <div class="perfil">
+                    <img src="../images/profile.png" class="perfil">
+                  </div>
+                </a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
     <main>
 
     <section class="login">
       <div class="login-wrapper">
-        <form class="form-wrapper" data-form="login" method="post" action="/profile/">
+        <form class="form-wrapper" data-form="login" action="/profile/" method="post">
           <h1>LOGIN</h1>
           <span data-form="error" class="error-message hide">Usuário ou senha inválidos</span>
           <div class="input-wrapper" data-form="nameWrapper">
-            <input data-login="login" name="login" type="text" class="input" placeholder="Login" data-form="loginInput" required="">
+            <input data-login="login" type="text" class="input" placeholder="Login" name="login" data-form="loginInput" required="">
           </div>
 
           <div class="input-wrapper" data-form="passwordWrapper">
-            <input data-login="password" name="password" type="password" class="input" placeholder="Password" data-form="passwordInput" required="">
+            <input data-login="password" type="password" class="input" name="password" placeholder="Password" data-form="passwordInput" required="">
           </div>
 
           <div class="button-wrapper">
-            <button class="button">Entrar</button>
+          	<input class="button" type="submit" value="Entrar">
           </div>
         </form>
 
         <p>Não possui uma conta?</p>
 
         <div class="button-wrapper b2">
-          <a href="/signup/">
-          	<button class="button">Criar conta</button>
-          </a>
+          <a class="button" href="/signup/">Criar conta</a>
         </div>
       </div>
 
-      <div class="modal-overlay">
-        <div class="modal">
-          <div id="form">
-            <span class="close" data-modal="close">X</span>
-
-            <h2>Novo usuário</h2>
-            <span data-form="success" class="success-message hide">Usuário cadastrado com sucesso</span>
-            <form data-form="create">
-              <div class="input-group">
-                <input data-create="name" class="input" type="text" id="nome" name="nome" placeholder="Nome" required="">
-              </div>
-
-              <div class="input-group">
-                <input data-create="login" class="input" type="text" id="login" name="login" placeholder="Login" required="">
-              </div>
-
-              <div class="input-group">
-                <input data-create="email" class="input" type="email" id="email" name="email" placeholder="E-mail" required="">
-              </div>
-
-              <div class="input-group">
-                <input data-create="password" class="input" type="password" id="password" name="password" placeholder="Senha" required="">
-              </div>
-
-              <div class="button-wrapper">
-                <button class="button">Cadastrar</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+    
     </section>
 
   </main>
@@ -187,6 +133,7 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    <script src="../scripts/main.js"></script>
+        <script src="perfil.js"></script>
+    <script src="negocie.js"></script>
   </body>
 </html>

@@ -55,8 +55,8 @@ box-sizing: border-box;
 
     .botao{
         margin-left: 10px;
-        color: ##a7f765;
-        border-color: ##a7f765;
+        color: #a7f765;
+        border-color: #a7f765;
     }
 
     .botao:hover{

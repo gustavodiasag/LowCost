@@ -13,7 +13,7 @@ public class Forum {
 		title = "";
 	}
 	
-	public Forum(int comments, int userId, String title) {
+	public Forum(String title, int comments, int userId) {
 		
 		setComments(comments);
 		setUserId(userId);

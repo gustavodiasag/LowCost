@@ -10,12 +10,14 @@ public class CompanyService {
 
 	private CompanyDAO companyDao = new CompanyDAO();
 	
-	public boolean insert(Request request, Response response) {
+	public int insert(Request request, Response response) {
 		
 		String name = request.queryParams("company");
 		
 		Company company = new Company(name);
 		
-		return companyDao.insert(company);
+		companyDao.insert(company);
+		
+		return companyDao.getId(name);
 	}
 }

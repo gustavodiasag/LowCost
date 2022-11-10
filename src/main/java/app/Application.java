@@ -13,6 +13,7 @@ public class Application {
 	private static CommentService commentService = new CommentService();
 	private static CompanyService companyService = new CompanyService();
 	private static OfferService offerService = new OfferService();
+	private static ForumService forumService = new ForumService();
 
 	public static void main(String[] args) {
 		
@@ -26,7 +27,108 @@ public class Application {
 		
 		get("/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/index.vm")));
 		
-		get("/profile/", (request, response)-> engine.render(new ModelAndView(model, "public/templates/profile.vm")));
+		get("/profile/", (request, response)-> {
+			
+			if (request.session().raw().getAttribute("login") != null) {
+				
+				response.redirect("/");
+				
+				return "";
+				
+			} else
+				
+				return engine.render(new ModelAndView(model, "public/templates/profile.vm"));
+		});
+		
+		get("/signup/", (request, response) -> {
+			
+			if (request.session().raw().getAttribute("login") != null) {
+				
+				response.redirect("/");
+				
+				return "";
+				
+			} else
+				
+				return engine.render(new ModelAndView(model, "public/templates/signup.vm"));
+		});
+		
+		get("/services/", (request, response) -> {
+			
+			response.header("Content-Type", "text/html");
+		    response.header("Content-Encoding", "UTF-8");
+		    
+		    return serviceService.makeList(""); 
+		});
+		
+		get("/submissions/", (request, response) -> {
+			
+			if (request.session().raw().getAttribute("login") != null) {
+				
+				response.header("Content-Type", "text/html");
+				response.header("Content-Encoding", "UTF-8");
+				
+				return serviceService.makeListSubmissions((String)request.session().raw().getAttribute("login"));
+
+			} else {
+				
+				response.redirect("/profile/");
+				
+				return "";
+			}
+			
+		});
+		
+		get("/submissions/delete/:serviceId/:companyId", (request, response) -> {
+			
+			offerService.delete(request, response);
+			commentService.deleteCommentService(request, response);
+			serviceService.delete(request, response);
+			
+			response.redirect("/submissions/");
+			
+			return "";
+		});
+		
+		get("/forum/", (request, response)-> {
+			
+			return forumService.makeList("comments");
+		});
+		
+		get("/forum/insert/", (request, response) -> {
+			
+			if (request.session().raw().getAttribute("login") != null) {
+				
+				forumService.insert(request, response);
+				
+				return forumService.makeList("comments");
+				
+			} else {
+				
+				response.redirect("/profile/");
+				
+				return "";
+			}
+		});
+		
+		get("/about/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/about.vm")));
+		
+		get("/add/", (request, response) -> {
+			
+			if (request.session().raw().getAttribute("login") != null) {
+				
+				return engine.render(new ModelAndView(model, "public/templates/add.vm"));
+				
+			} else {
+				
+				response.redirect("/profile/");
+				
+				return "";
+				
+			}
+		});
+		
+		get("/tables/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/tables.vm")));
 		
 		post("/profile/", (request, response) -> {
 			
@@ -43,7 +145,6 @@ public class Application {
 			return "";
 		});
 		
-		get("/signup/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/signup.vm")));
 		
 		post("/signup/", (request, response) -> {
 			
@@ -60,33 +161,27 @@ public class Application {
 			return "";
 		});
 		
-		get("/services/", (request, response) -> {
+		post("/services/", (request, response) -> {
 			
 			response.header("Content-Type", "text/html");
 		    response.header("Content-Encoding", "UTF-8");
 		    
-		    return serviceService.makeList(); 
+		    return serviceService.makeList(request.queryParams("search"));
 		});
-		
-		get("/forum/", (request, response)-> engine.render(new ModelAndView(model, "public/templates/forum.vm")));
-		
-		get("/about/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/about.vm")));
-		
-		get("/add/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/add.vm")));
 		
 		post("/add/", (request, response) -> {
 			
 			userService.updateContributions(request, response);
-			companyService.insert(request, response);
-			serviceService.insert(request, response);
-			commentService.insert(request, response);
-			offerService.insert(request, response);
+			
+			int companyId = companyService.insert(request, response);
+			int serviceId = serviceService.insert(request, response);
+			
+			commentService.insert(request, response, companyId, serviceId);
+			offerService.insert(companyId, serviceId);
 			
 			response.redirect("/add/");
 			
 			return "";
 		});
-		
-		get("/tables/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/tables.vm")));
 	}
 }

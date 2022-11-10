@@ -3,6 +3,8 @@ package dao;
 import model.Forum;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ForumDAO extends DAO {
 		
@@ -11,29 +13,35 @@ public class ForumDAO extends DAO {
 	public void finalize() { close(); }
 
 	public boolean insert(Forum forum) {
+		
+		if (this.getId(forum.getTitle()) != 0) return true;
 
-		boolean status = false;
+		else {
+			
+			boolean status = false;
+			
+			try {
+				
+				String sql = "INSERT INTO forum (comments, title, user_id_fk) VALUES ("
+						+ forum.getComments() + ", '"
+						+ forum.getTitle() + "', "
+						+ forum.getUserId() + ");";
+				
+				PreparedStatement st = connection.prepareStatement(sql);
+				
+				st.executeUpdate();
+				st.close();
+				
+				status = true;
+				
+			} catch (SQLException e) { throw new RuntimeException(e); }
+			
+			return status;
+		}
 
-		try {
-
-			String sql = "INSERT INTO forum (comments, title, user_id_fk) VALUES ("
-						 + forum.getComments() + ", '"
-						 + forum.getTitle() + ", "
-						 + forum.getUserId() + ");";
-
-			PreparedStatement st = connection.prepareStatement(sql);
-
-			st.executeUpdate();
-			st.close();
-
-			status = true;
-
-		} catch (SQLException e) { throw new RuntimeException(e); }
-
-		return status;
 	}
 
-	public int get(String name) {
+	public int getId(String title) {
 
 		int id = 0;
 
@@ -41,7 +49,7 @@ public class ForumDAO extends DAO {
 
 			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			String sql = "SELECT * FROM forum WHERE name = '" + name + "';";
+			String sql = "SELECT * FROM forum WHERE title = '" + title + "';";
 
 			ResultSet rs = st.executeQuery(sql);
 
@@ -53,6 +61,36 @@ public class ForumDAO extends DAO {
 		} catch (Exception e) { System.err.println(e.getMessage()); }
 
 		return id;
+	}
+	
+	public List<List<String>> getAll(String orderBy) {
+		
+		List<List<String>> forums = new ArrayList<List<String>>();
+		
+		try {
+			
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			
+			String sql = "SELECT title, comments FROM public.forum "
+						 + ((orderBy.isEmpty()) ? "" : "ORDER BY " + orderBy + " DESC");
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+	        while(rs.next()) {
+	        	
+	        	List<String> data = new ArrayList<String>();
+	        	
+	        	data.add(rs.getString("title"));
+	        	data.add(String.valueOf(rs.getInt("comments")));
+	        	
+	        	forums.add(data);
+	        }
+	        
+	        st.close();
+	        
+		} catch (Exception e) { System.err.println(e.getMessage()); }
+		
+		return forums;
 	}
 
 	public boolean update(Forum forum) {

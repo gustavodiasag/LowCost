@@ -28,7 +28,7 @@
 
 
 
-/*cabeçalho*/
+/*cabeçalho
     header{
       padding: 30px;
       background-color: #3c3250;
@@ -38,7 +38,7 @@ box-shadow: -11px 10px 16px 1px rgba(0, 0, 0, 0.3);
 transition: all 0.2s ease;
 box-sizing: border-box;
     }
-
+*/
 .navbar.brand {
     position: absolute;
   width: 60px;
@@ -218,7 +218,7 @@ box-sizing: border-box;
 	background-color: #3c3250;
 }
 
-/*tabelas*/
+
 table {
   border-collapse: collapse;
   

@@ -23,73 +23,54 @@
   </head>
 
   <body>
-    <header>
-      <link
-        rel="shortcut icon"
-        type="imagem/x-icon"
-        href="/images/icon.png"
-      />
-      <div class="row">
-        <div class="col-12 header_area">
-          <div class="row">
-            <div class="col-12 col-sm-12 col-md-8 col-lg-10 memu_area">
-              <nav class="nav">
-              <a class="navbar-brand" href="/"
-                  ><img src="/images/logo.png" class="logo dar_espaco"
-                /></a>
-                   <ul class="nav navbar-justify-content-center">
-            <li class="nav-item-compare">
-              <div class="dropdown">
-                    <button class="btn dropdown-toggle texto"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Compare
-                    </button>
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item texto_drop" href="/tables/">Tabelas</a>
-                      <a class="dropdown-item texto_drop" href="#"
-                        >Adicione</a
-                      >
-                      <a class="dropdown-item texto_drop" href="/services/"
-                        >Serviços</a
-                      >
-                    </div>
+     <header>
+    
+    <div class="row">
+      <div class="col-12 header_area">
+        <div class="row">
+
+          <div class="col-12 col-sm-12 col-md-8 col-lg-10 memu_area">
+            <nav class="navbar navbar-expand-md fixed-top menu-area" style="color: #3c3250">
+                  <a class="navbar-brand" href="#"><img src="/images/logo.png" class="logo dar_espaco"></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <img src="/images/more.png" class="more">
+              </button>
+              <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <a class="flex-sm-fill text-sm-center nav-link" href="/">Home</a>
+                <div class="dropdown">
+                  <button class="btn dropdown-toggle texto" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Compare
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item texto_drop" href="/tables/">Tabelas</a>
+                    <a class="dropdown-item texto_drop" href="/add/">Adicione</a>
+                    <a class="dropdown-item texto_drop" href="/services/">Serviços</a>
                   </div>
-            </li>
-            <li class="nav-item">
-              <a
-                    class="flex-sm-fill text-sm-center nav-link"
-                    href="/forum/"
-                    >Fórum</a
-                  >
-            </li>
-            <li class="nav-item">
-               <a
-                    class="flex-sm-fill text-sm-center nav-link"
-                    href="/about/"
-                    >Sobre</a
-                  >
-                  </li> </ul> 
-                 
-            <a href="/profile/">
-                    <div class="perfil">
-                      <img src="/images/profile.png" class="perfil" /> </a>
-             </div> </nav>
-            </div> </div> </div> </div> 
-    </header>
+                </div>
+                <a class="flex-sm-fill text-sm-center nav-link" href="/forum/">Fórum</a>
+
+                <a class="flex-sm-fill text-sm-center nav-link" href="/about/">Sobre</a>
+                <a href="/profile/">
+                  <div class="perfil">
+                    <img src="/images/profile.png" class="perfil">
+                  </div>
+                </a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <body>
    
     <main class="container">  
         <nav>
            
-            <a href="#"><button class="btn botao-padrao" type="button" id="btn-forum">Seus serviços</button></a>
+            <a href="/submissions/"><button class="btn botao-padrao" type="button" id="btn-forum">Seus serviços</button></a>
           </nav>
       <center style= "position: relative; margin-top: 10px; margin-bottom: 20px;">
           <h1> Todos os Serviços</h1>
@@ -99,21 +80,19 @@
               
               <!-- Search bar -->
               <div>
-                <form autocomplete="on">
+                <form autocomplete="on" action="/services/" method="post">
                 <div id="maindiv">
                     <span id="inputspan"><input id="ver-js" type="text" name="search"  placeholder="Digite aqui!" style="margin-left: 15px;" list="historico" ></span>
                     <span><i class='fa-solid fa-magnifying-glass' style="color: #3c3250; position: relative; background: transparent;"></i></span>
-                  
                   </div>
                 </div>
-                <ul class="list" id="para-list"></ul>
+              	<div>
+              		<input type="submit" class="btn botao-padrao" value="Pesquisar" style="margin-top: 15px;">
+              	</div>
               </form>
-              <section>
-                <div><button class="btn botao-padrao" type="submit" onclick="redireciona()">Pesquisar</button></div>
-                </section>
             </center>
           <div id="main">
-          SERVICES
+       	SERVICES
         </div>
     </main>
     
@@ -165,7 +144,6 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    <script src="/scripts/main.js"></script>
+    <script src="/scrpts/main.js"></script>
   </body>
 </html>
-

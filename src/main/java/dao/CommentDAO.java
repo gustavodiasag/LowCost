@@ -16,12 +16,13 @@ public class CommentDAO extends DAO {
 
 		try {
 
-			String sql = "INSERT INTO \"public\".comment (content, user_id_fk, service_id_fk, forum_id_fk, sentiment, submission) VALUES ('"
+			String sql = "INSERT INTO \"public\".comment (content, user_id_fk, service_id_fk, forum_id_fk, sentiment, company_id_fk, submission) VALUES ('"
 						 + comment.getContent() + "', "
 						 + comment.getUserId() + ", "
 						 + comment.getServiceId() + ", "
 						 + comment.getForumId() + ", "
-						 + comment.getSentiment() + ", ?);";
+						 + comment.getSentiment() + ", "
+						 + comment.getCompanyId() + ", ?);";
 						 
 			PreparedStatement st = connection.prepareStatement(sql);
 
@@ -42,11 +43,12 @@ public class CommentDAO extends DAO {
 
 		try {
 
-			String sql = "INSERT INTO \"public\".comment (content, user_id_fk, service_id_fk, sentiment, forum_id_fk, submission) VALUES ('"
+			String sql = "INSERT INTO \"public\".comment (content, user_id_fk, service_id_fk, sentiment, company_id_fk, forum_id_fk, submission) VALUES ('"
 						 + comment.getContent() + "', "
 						 + comment.getUserId() + ", "
 						 + comment.getServiceId() + ", "
-						 + comment.getSentiment() + ", NULL, ?);";
+						 + comment.getSentiment() + ", "
+						 + comment.getCompanyId() + ", NULL, ?);";
 
 			PreparedStatement st = connection.prepareStatement(sql);
 
@@ -67,10 +69,10 @@ public class CommentDAO extends DAO {
 
 		try {
 
-			String sql = "INSERT INTO \"public\".comment (content, user_id_fk, service_id_fk, sentiment, forum_id_fk, submission) VALUES ('"
+			String sql = "INSERT INTO \"public\".comment (content, user_id_fk, service_id_fk, sentiment, company_id_fk, forum_id_fk, submission) VALUES ('"
 						 + comment.getContent() + "', "
 						 + comment.getUserId() + ", "
-						 + "NULL, NULL, "
+						 + "NULL, NULL, NULL, "
 						 + comment.getForumId() + ", ?);";
 
 			PreparedStatement st = connection.prepareStatement(sql);
@@ -107,7 +109,8 @@ public class CommentDAO extends DAO {
 									  rs.getInt("service_id_fk"),
 									  rs.getInt("forum_id_fk"),
 									  rs.getInt("user_id_fk"),
-									  rs.getFloat("sentiment"));
+									  rs.getFloat("sentiment"),
+									  rs.getInt("company_id_fk"));
 			}
 
 			st.close();
@@ -142,7 +145,7 @@ public class CommentDAO extends DAO {
 		return status;
 	}
 
-	public boolean delete(int user_id, int service_id, int forum_id) {
+	public boolean deleteCommentService(int userId, int serviceId, int companyId) {
 
 		boolean status = false;
 
@@ -150,9 +153,9 @@ public class CommentDAO extends DAO {
 				
 			Statement st = connection.createStatement();
 			
-			st.executeUpdate("DELETE FROM \"public\".comment WHERE user_id = " + user_id
-							 + " AND service_id_fk = " + service_id
-							 + " AND forum_id_fk = " + forum_id);
+			st.executeUpdate("DELETE FROM public.comment WHERE user_id_fk = " + userId
+							 + " AND service_id_fk = " + serviceId
+							 + " AND company_id_fk = " + companyId);
 			st.close();
 
 			status = true;

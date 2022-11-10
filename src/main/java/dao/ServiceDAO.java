@@ -34,7 +34,7 @@ public class ServiceDAO extends DAO {
 		return status;
 	}
 	
-	public List<List<String>> getAll() {
+	public List<List<String>> get(String searchTerm) {
 		
 		List<List<String>> services = new ArrayList<List<String>>();
 		
@@ -42,11 +42,12 @@ public class ServiceDAO extends DAO {
 			
 			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			
-			String sql = "SELECT public.company.name, description, price, content, login FROM public.service "
-						 + "JOIN public.offer ON public.service.id = public.offer.service_id_fk "
-						 + "JOIN public.company ON public.offer.company_id_fk = public.company.id "
-						 + "JOIN public.comment ON public.comment.service_id_fk = public.service.id "
-						 + "JOIN public.user ON public.comment.user_id_fk = public.user.id;";
+				String sql = "SELECT public.company.name, description, price, content, login FROM public.comment "
+							 + "JOIN public.user ON public.comment.user_id_fk = public.user.id "
+							 + "JOIN service ON public.comment.service_id_fk = public.service.id "
+							 + "JOIN company ON public.comment.company_id_fk = public.company.id "
+							 + ((searchTerm.isEmpty()) ? "" : "WHERE description = '" + searchTerm + "' ")
+							 + "ORDER BY sentiment DESC;";
 			
 			ResultSet rs = st.executeQuery(sql);
 			
@@ -59,6 +60,46 @@ public class ServiceDAO extends DAO {
 	        	data.add(String.valueOf(rs.getDouble("price")));
 	        	data.add(rs.getString("content"));
 	        	data.add(rs.getString("login"));
+	        	
+	        	services.add(data);
+	        }
+	        
+	        st.close();
+	        
+		} catch (Exception e) { System.err.println(e.getMessage()); }
+		
+		return services;
+	}
+	
+	public List<List<String>> getByUserId(int userId) {
+		
+		List<List<String>> services = new ArrayList<List<String>>();
+		
+		try {
+			
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			
+				String sql = "SELECT public.company.name, description, price, content, submission," + ""
+							 + "public.service.id AS serviceId, public.company.id AS companyId FROM public.comment "
+							 + "JOIN public.user ON public.comment.user_id_fk = public.user.id "
+							 + "JOIN service ON public.comment.service_id_fk = public.service.id "
+							 + "JOIN company ON public.comment.company_id_fk = public.company.id "
+							 + "WHERE public.comment.user_id_fk = " + userId + " "
+							 + "ORDER BY sentiment DESC;";
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+	        while(rs.next()) {
+	        	
+	        	List<String> data = new ArrayList<String>();
+	        	
+	        	data.add(rs.getString("name"));
+	        	data.add(rs.getString("description"));
+	        	data.add(String.valueOf(rs.getDouble("price")));
+	        	data.add(rs.getString("content"));
+	        	data.add(String.valueOf(rs.getTimestamp("submission").toLocalDateTime()));
+	        	data.add(String.valueOf(rs.getInt("serviceId")));
+	        	data.add(String.valueOf(rs.getInt("companyId")));
 	        	
 	        	services.add(data);
 	        }
