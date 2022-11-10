@@ -33,40 +33,64 @@ public class UserDAO extends DAO {
 		return status;
 	}
 	
-	public User get(int id) {
+	public User getAll(String login) {
 		
 		User user = null;
 		
 		try {
 			
-			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			
-			String sql = "SELECT * FROM \"public\".user WHERE id = " + id;
+			String sql = "SELECT * FROM \"public\".user WHERE login = '" + login + "';";
 			
-			ResultSet rs = st.executeQuery(sql);
+			ResultSet rs = st.executeQuery(sql);	
 			
-			if (rs.next()) {
-				
-				user = new User(rs.getString("name"), rs.getString("login"), rs.getString("password"),
-						   		  rs.getString("email"), rs.getInt("contributions"));
-			}
-			
-			st.close();
-			
+	        if(rs.next())
+	        	user = new User(rs.getInt("id"),
+	        					rs.getString("name"),
+	        					rs.getString("login"),
+	        					rs.getString("password"), 
+	        			 		rs.getString("email"), 
+	        			        rs.getInt("contributions"));
+	        st.close();
+	        
 		} catch (Exception e) { System.err.println(e.getMessage()); }
 		
 		return user;
 	}
 	
-	public User check(String login) {
+	public int getId(String login) {
 		
-		User user = null;
+		int id = 0;
 		
 		try {
 			
 			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			
 			String sql = "SELECT * FROM \"public\".user WHERE login = '" + login + "';";
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+			if (rs.next())
+				id = rs.getInt("id");
+			
+			st.close();
+			
+		} catch (Exception e) { System.err.println(e.getMessage()); }
+		
+		return id;
+	}
+	
+	public User check(String login, String password) {
+		
+		User user = null;
+		
+		try {
+			
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			
+			String sql = "SELECT * FROM \"public\".user WHERE login = '" + login +
+						 "' AND password = MD5('" + password + "');";
 			
 			ResultSet rs = st.executeQuery(sql);
 			
@@ -86,18 +110,15 @@ public class UserDAO extends DAO {
 		return user;
 	}
 	
-	public boolean update(User user) {
+	public boolean updateContributions(User user) {
 		
 		boolean status = false;
 		
 		try {
 			
-			String sql = "UPDATE user SET name = '" + user.getName()
-						  + "', login = '" + user.getLogin()
-						  + "', password = MD5('" + user.getPassword()
-						  + "'), email = '" + user.getEmail()
-						  + "', contributions = " + user.getContributions()
-						  + "' WHERE id = " + user.getId();
+			String sql = "UPDATE \"public\".user SET contributions = "
+						 + user.getContributions() + " WHERE id = "
+						 + user.getId();
 			
 			PreparedStatement st = connection.prepareStatement(sql);
 			

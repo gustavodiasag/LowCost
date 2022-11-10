@@ -13,42 +13,48 @@ public class CompanyDAO extends DAO {
 	public boolean insert(Company company) {
 
 		boolean status = false;
-
-		try {
-
-			String sql = "INSERT INTO company (name) VALUES ('" + company.getName() + "');";
-
-			PreparedStatement st = connection.prepareStatement(sql);
-
-			st.executeUpdate();
-			st.close();;
-
-			status = true;
-
-		} catch (SQLException e) { throw new RuntimeException(e); }
-
+		
+		if (this.getId(company.getName()) != 0) return true;
+		
+		else {
+			
+			try {
+				
+				String sql = "INSERT INTO company (name) VALUES ('" + company.getName() + "');";
+				
+				PreparedStatement st = connection.prepareStatement(sql);
+				
+				st.executeUpdate();
+				st.close();;
+				
+				status = true;
+				
+			} catch (SQLException e) { throw new RuntimeException(e); }			
+		}
+		
 		return status;
 	}
 
-	public Company get(int id) {
+	public int getId(String name) {
 
-		Company company = null;
+		int id = 0;
 
 		try {
 
 			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			String sql = "SELECT * FROM company WHERE id = " + id;
+			String sql = "SELECT * FROM company WHERE name = '" + name + "';";
 
 			ResultSet rs = st.executeQuery(sql);
 
-			if (rs.next()) company = new Company(rs.getString("name"));
+			if (rs.next())
+				id = rs.getInt("id");
 
 			st.close();
 
 		} catch (Exception e) { System.err.println(e.getMessage()); }
 
-		return company;
+		return id;
 	}
 
 	public boolean update(Company company) {

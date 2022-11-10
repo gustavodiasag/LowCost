@@ -3,6 +3,8 @@ package dao;
 import model.Service;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServiceDAO extends DAO {
 
@@ -16,8 +18,8 @@ public class ServiceDAO extends DAO {
 
 		try {
 
-			String sql = "INSERT INTO service (description, price) "
-						 + "VALUES ('" + service.getDescription() + "', "
+			String sql = "INSERT INTO service (description, price) VALUES ('"
+						 + service.getDescription() + "', "
 						 + service.getPrice() + ");";
 			
 			PreparedStatement st = connection.prepareStatement(sql);
@@ -31,27 +33,63 @@ public class ServiceDAO extends DAO {
 
 		return status;
 	}
-
-	public Service get(int id) {
+	
+	public List<List<String>> getAll() {
 		
-		Service service = null;
+		List<List<String>> services = new ArrayList<List<String>>();
+		
+		try {
+			
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			
+			String sql = "SELECT public.company.name, description, price, content, login FROM public.service "
+						 + "JOIN public.offer ON public.service.id = public.offer.service_id_fk "
+						 + "JOIN public.company ON public.offer.company_id_fk = public.company.id "
+						 + "JOIN public.comment ON public.comment.service_id_fk = public.service.id "
+						 + "JOIN public.user ON public.comment.user_id_fk = public.user.id;";
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+	        while(rs.next()) {
+	        	
+	        	List<String> data = new ArrayList<String>();
+	        	
+	        	data.add(rs.getString("name"));
+	        	data.add(rs.getString("description"));
+	        	data.add(String.valueOf(rs.getDouble("price")));
+	        	data.add(rs.getString("content"));
+	        	data.add(rs.getString("login"));
+	        	
+	        	services.add(data);
+	        }
+	        
+	        st.close();
+	        
+		} catch (Exception e) { System.err.println(e.getMessage()); }
+		
+		return services;
+	}
+
+	public int getId(String description) {
+		
+		int id = 0;
 
 		try {
 			
 			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			String sql = "SELECT * FROM service WHERE id = " + id;
+			String sql = "SELECT * FROM service WHERE description = '" + description + "';";
 
 			ResultSet rs = st.executeQuery(sql);
 
-			if (rs.next()) service = new Service(rs.getString("description"),
-												(float)rs.getDouble("price"));
+			if (rs.next())
+				id = rs.getInt("id");
 
 			st.close();
 
 		} catch (Exception e) { System.err.println(e.getMessage()); }
 
-		return service;
+		return id;
 	}
 
 	public boolean update(Service service) {

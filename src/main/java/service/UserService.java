@@ -6,17 +6,13 @@ import model.User;
 import spark.Request;
 import spark.Response;
 
-import java.util.HashMap;
-
 public class UserService {
 	
-	HashMap<String, Object> model = new HashMap<String, Object>();
-	
-	private UserDAO userDAO = new UserDAO();
+	private UserDAO userDao = new UserDAO();
 	
 	public UserService() {}
 	
-	public String insert(Request request, Response response) {
+	public boolean insert(Request request, Response response) {
 		
 		String name = request.queryParams("name");
 		String login = request.queryParams("login");
@@ -25,20 +21,29 @@ public class UserService {
 		
 		User user = new User(name, login, password, email, 0);
 		
-		if (userDAO.insert(user)) return user.getLogin();
-		
-		return null;
+		return userDao.insert(user);
 	}
 	
-	public String check(Request request, Response response) {
+	public boolean check(Request request, Response response) {
 		
 		String login = request.queryParams("login");
 		String password = request.queryParams("password");
 		
-		User user = userDAO.check(login);
+		User user = userDao.check(login, password);
 		
-		if (user.getPassword().compareTo(password) == 0) return user.getLogin();
+		if (user != null) return true;
 		
-		return null;
+		return false;
+	}
+	
+	public boolean updateContributions(Request request, Response response) {
+		
+		String login = (String)request.session().raw().getAttribute("login");
+		
+		User user = userDao.getAll(login);
+		
+		user.setContributions(user.getContributions() + 1);
+		
+		return userDao.updateContributions(user);
 	}
 }

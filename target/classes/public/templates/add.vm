@@ -36,7 +36,7 @@
           <div class="row">
             <div class="col-12 col-sm-12 col-md-8 col-lg-10 memu_area">
               <nav class="nav">
-              <a class="navbar-brand" href="index.html"
+              <a class="navbar-brand" href="/"
                   ><img src="../images/logo.png" class="logo dar_espaco"
                 /></a>
                    <ul class="nav navbar-justify-content-center">
@@ -54,11 +54,11 @@
                     <div
                       class="dropdown-menu"
                       aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item texto_drop" href="table.html">Tabelas</a>
-                      <a class="dropdown-item texto_drop" href="add.html"
+                      <a class="dropdown-item texto_drop" href="/tables/">Tabelas</a>
+                      <a class="dropdown-item texto_drop" href="/add/"
                         >Adicione</a
                       >
-                      <a class="dropdown-item texto_drop" href="services.html"
+                      <a class="dropdown-item texto_drop" href="/services/"
                         >Serviços</a
                       >
                     </div>
@@ -67,19 +67,19 @@
             <li class="nav-item">
               <a
                     class="flex-sm-fill text-sm-center nav-link"
-                    href="forum.html"
+                    href="/forum/"
                     >Fórum</a
                   >
             </li>
             <li class="nav-item">
                <a
                     class="flex-sm-fill text-sm-center nav-link"
-                    href="about.html"
+                    href="/about/"
                     >Sobre</a
                   >
                   </li> </ul> 
                  
-            <a href="Perfil.html">
+            <a href="/profile/">
                     <div class="perfil">
                       <img src="../images/profile.png" class="perfil" /> </a>
              </div> </nav>
@@ -88,15 +88,15 @@
 
     <main class="container">
     <nav>
-      <a href="submissions.html"> <button class="btn botao-padrao" type="button" id="btn-forum">Sua lista de serviços</button> </a>
+      <a href="/submissions/"> <button class="btn botao-padrao" type="button" id="btn-forum">Sua lista de serviços</button> </a>
       
     </nav>
     <h1> Cadastrar serviço </h1>
-    <form onsubmit="">
+    <form onsubmit="" action="/add/" method="post">
       <label for="empresa">Empresa que ofereçe o serviço</label>
       <input
         required
-        name="empresa"
+        name="company"
         id="empresa"
         placeholder="Netflix, Claro, VIVO, CEMIG..."
       />
@@ -104,7 +104,7 @@
       <label for="servico">Serviço</label>
       <input
         required
-        name="servico"
+        name="description"
         id="servico"
         placeholder="Internet, plano de TV, água, luz..."
       />
@@ -112,14 +112,14 @@
       <label for="preco">Preço</label>
       <input
         required
-        name="preco"
+        name="price"
         id="preco"
         placeholder="Mensal: 30.00, 49.99..."
       />
 
       <label for="notas">Observações (opcional)</label>
       <textarea
-        name="notas"
+        name="comment"
         id="notas"
         placeholder="Liguei pra o número deles e depois de reclamar bastante deixaram eu diminuir pra esse preço sem perder nada."
       ></textarea>

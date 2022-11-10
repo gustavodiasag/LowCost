@@ -108,8 +108,12 @@
   </div>
 </div></ol>
     </div>
+    <form action="/forum/" method="post">
     <textarea rows="2" cols="40"></textarea>
-    <button class="btn botao-padrao" type="button" id="btn-forum">adicionar tópico</button>
+    <div class="button-wrapper">
+         <input type="submit" value="Adicionar Tópico	" class="button">
+    </div>
+    </form>
   </main>
     
     <footer>

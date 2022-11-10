@@ -45,7 +45,7 @@
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item texto_drop" href="/tables/">Tabelas</a>
-                    <a class="dropdown-item texto_drop" href="#">Adicione</a>
+                    <a class="dropdown-item texto_drop" href="/add/">Adicione</a>
                     <a class="dropdown-item texto_drop" href="/services/">Serviços</a>
                   </div>
                 </div>

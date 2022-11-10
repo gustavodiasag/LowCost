@@ -16,10 +16,61 @@ public class CommentDAO extends DAO {
 
 		try {
 
-			String sql = "INSERT INTO \"public\".comment (content, user_id, service_id, forum_id) VALUES ('"
+			String sql = "INSERT INTO \"public\".comment (content, user_id_fk, service_id_fk, forum_id_fk, sentiment, submission) VALUES ('"
 						 + comment.getContent() + "', "
 						 + comment.getUserId() + ", "
 						 + comment.getServiceId() + ", "
+						 + comment.getForumId() + ", "
+						 + comment.getSentiment() + ", ?);";
+						 
+			PreparedStatement st = connection.prepareStatement(sql);
+
+			st.setTimestamp(1, Timestamp.valueOf(comment.getSubmission()));
+			st.executeUpdate();
+			st.close();
+
+			status = true;
+
+		} catch (SQLException e	) { throw new RuntimeException(e); }
+
+		return status;
+	}
+	
+	public boolean insertCommentService(Comment comment) {
+
+		boolean status = false;
+
+		try {
+
+			String sql = "INSERT INTO \"public\".comment (content, user_id_fk, service_id_fk, sentiment, forum_id_fk, submission) VALUES ('"
+						 + comment.getContent() + "', "
+						 + comment.getUserId() + ", "
+						 + comment.getServiceId() + ", "
+						 + comment.getSentiment() + ", NULL, ?);";
+
+			PreparedStatement st = connection.prepareStatement(sql);
+
+			st.setTimestamp(1, Timestamp.valueOf(comment.getSubmission()));
+			st.executeUpdate();
+			st.close();
+
+			status = true;
+
+		} catch (SQLException e	) { throw new RuntimeException(e); }
+
+		return status;
+	}
+	
+	public boolean insertCommentForum(Comment comment) {
+
+		boolean status = false;
+
+		try {
+
+			String sql = "INSERT INTO \"public\".comment (content, user_id_fk, service_id_fk, sentiment, forum_id_fk, submission) VALUES ('"
+						 + comment.getContent() + "', "
+						 + comment.getUserId() + ", "
+						 + "NULL, NULL, "
 						 + comment.getForumId() + ", ?);";
 
 			PreparedStatement st = connection.prepareStatement(sql);
@@ -43,9 +94,9 @@ public class CommentDAO extends DAO {
 
 			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			String sql = "SELECT * FROM \"public\"comment WHERE user_id = " + user_id
-						 + " AND service_id = " + service_id
-						 + " AND forum_id = " + forum_id;
+			String sql = "SELECT * FROM \"public\"comment WHERE user_id_fk = " + user_id
+						 + " AND service_id_fk = " + service_id
+						 + " AND forum_id_fk = " + forum_id;
 
 			ResultSet rs = st.executeQuery(sql);
 
@@ -53,9 +104,10 @@ public class CommentDAO extends DAO {
 
 				comment = new Comment(rs.getString("content"),
 									  rs.getTimestamp("submission").toLocalDateTime(),
-									  rs.getInt("service_id"),
-									  rs.getInt("forum_id"),
-									  rs.getInt("user_id"));
+									  rs.getInt("service_id_fk"),
+									  rs.getInt("forum_id_fk"),
+									  rs.getInt("user_id_fk"),
+									  rs.getFloat("sentiment"));
 			}
 
 			st.close();
@@ -73,9 +125,9 @@ public class CommentDAO extends DAO {
 
 			String sql = "UPDATE \"public\".comment SET content = '" + comment.getContent()
 						  + "', submission = ?"
-						  + " WHERE user_id = " + comment.getUserId()
-						  + " AND service_id = " + comment.getServiceId()
-						  + " AND forum_id = " + comment.getForumId();
+						  + " WHERE user_id_fk = " + comment.getUserId()
+						  + " AND service_id_fk = " + comment.getServiceId()
+						  + " AND forum_id_fk = " + comment.getForumId();
 
 			PreparedStatement st = connection.prepareStatement(sql);
 			
@@ -99,8 +151,8 @@ public class CommentDAO extends DAO {
 			Statement st = connection.createStatement();
 			
 			st.executeUpdate("DELETE FROM \"public\".comment WHERE user_id = " + user_id
-							 + " AND service_id = " + service_id
-							 + " AND forum_id = " + forum_id);
+							 + " AND service_id_fk = " + service_id
+							 + " AND forum_id_fk = " + forum_id);
 			st.close();
 
 			status = true;

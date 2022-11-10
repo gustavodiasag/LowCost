@@ -15,6 +15,16 @@ public class User {
 		contributions = 0;
 	}
 	
+	public User (int id, String name, String login, String password, String  email, int contributions) {
+		
+		setId(id);
+		setName(name);
+		setLogin(login);
+		setPassword(password);
+		setEmail(email);
+		setContributions(contributions);
+	}
+	
 	public User (String name, String login, String password, String  email, int contributions) {
 		
 		setName(name);

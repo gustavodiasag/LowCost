@@ -13,7 +13,7 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -27,7 +27,7 @@
       <link
         rel="shortcut icon"
         type="imagem/x-icon"
-        href="images/icon.png"
+        href="/images/icon.png"
       />
       <div class="row">
         <div class="col-12 header_area">
@@ -35,7 +35,7 @@
             <div class="col-12 col-sm-12 col-md-8 col-lg-10 memu_area">
               <nav class="nav">
               <a class="navbar-brand" href="/"
-                  ><img src="../images/logo.png" class="logo dar_espaco"
+                  ><img src="/images/logo.png" class="logo dar_espaco"
                 /></a>
                    <ul class="nav navbar-justify-content-center">
             <li class="nav-item-compare">
@@ -79,7 +79,7 @@
                  
             <a href="/profile/">
                     <div class="perfil">
-                      <img src="../images/profile.png" class="perfil" /> </a>
+                      <img src="/images/profile.png" class="perfil" /> </a>
              </div> </nav>
             </div> </div> </div> </div> 
     </header>
@@ -113,109 +113,7 @@
                 </section>
             </center>
           <div id="main">
-        <details open="">
-          <summary style="width: 100%">
-            CLARO - Internet 100 megas - R$ 30
-          </summary>
-          Ameaçei cancelar e eles me deram um desconto de 40 pra 30 sem perder nada.
-          <p class="userName">@Ciclano do Queijo </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            Copasa - Água - R$ 40
-          </summary>
-          
-          <p class="userName">@Arthur Ricardo </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            CLARO - Telefone fixo - R$ 29.9
-          </summary>
-          
-          <p class="userName">@Joaquim da Silva </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            Netflix - Assinatura - R$ 10
-          </summary>
-          
-          <p class="userName">@Ciclano do Queijo </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            CLARO - Televisão - R$ 49.9
-          </summary>
-          
-          <p class="userName">@Joaquim da Silva </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            CLARO - 40 megas celular - R$ 29.9
-          </summary>
-          Disse que a OI tinha a mesma coisa mais barato e abaixaram o preço.
-          <p class="userName">@Arthur Ricardo </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            GVT - Internet 100 megas - R$ 89.99
-          </summary>
-          Peguei uma empresa de internet lá do Acre e usei como comparação e eles abaixaram até ficar igual o da empresa do Acre.
-          <p class="userName">@Afonsino Augusto </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            CEMIG - Energia - R$ 200
-          </summary>
-          
-          <p class="userName">@Arthur Ricardo </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            Bradesco Seguros - Seguro automóvel - R$ 22.5
-          </summary>
-          Plano Start
-          <p class="userName">@João Pedro </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            Bradesco Seguros - Plano dental - R$ 80.99
-          </summary>
-          
-          <p class="userName">@João Pedro </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            Bradesco Seguros - Plano de Saúde - R$ 127.88
-          </summary>
-          Dão desconto se você tiver algum familiar que também usa o plano deles
-          <p class="userName">@João Pedro </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            Spotify - Assinatura - R$ 8.99
-          </summary>
-          Promoção que fizeram no natal
-          <p class="userName">@Afonsino Augusto </p>
-        </details>
-        
-        <details open="">
-          <summary style="width: 100%">
-            CEMIG - Energia - R$ 127.5
-          </summary>
-          Se você ligar e dizer que você recebe menos que 3 salários mínimos eles reduzem sua conta de acordo com algua regra nova do governo lá.
-          <p class="userName">@Ciclano do Queijo </p>
-        </details>
+          SERVICES
         </div>
     </main>
     
@@ -267,7 +165,7 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    <script src="../scripts/main.js"></script>
+    <script src="/scripts/main.js"></script>
   </body>
 </html>
 

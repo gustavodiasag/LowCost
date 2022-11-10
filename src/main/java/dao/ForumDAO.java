@@ -33,27 +33,26 @@ public class ForumDAO extends DAO {
 		return status;
 	}
 
-	public Forum get(int id) {
+	public int get(String name) {
 
-		Forum forum = null;
+		int id = 0;
 
 		try {
 
 			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			String sql = "SELECT * FROM forum WHERE id = " + id;
+			String sql = "SELECT * FROM forum WHERE name = '" + name + "';";
 
 			ResultSet rs = st.executeQuery(sql);
 
-			if (rs.next()) forum = new Forum(rs.getInt("comments"),
-											 rs.getInt("user_id_fk"),
-											 rs.getString("title"));
+			if (rs.next())
+				id = rs.getInt("id");
 
 			st.close();
 
 		} catch (Exception e) { System.err.println(e.getMessage()); }
 
-		return forum;
+		return id;
 	}
 
 	public boolean update(Forum forum) {
