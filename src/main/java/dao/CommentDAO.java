@@ -164,4 +164,23 @@ public class CommentDAO extends DAO {
 
 		return status;
 	}
+	
+	public boolean deleteCommentForum(int forumId) {
+		
+		boolean status = false;
+				
+		try {
+			
+			Statement st = connection.createStatement();
+			
+			st.executeUpdate("DELETE FROM public.comment WHERE forum_id_fk = " + forumId);
+			
+			st.close();
+			
+			status = true;
+			
+		} catch (SQLException e) { throw new RuntimeException(e); }
+		
+		return status;
+	}
 }

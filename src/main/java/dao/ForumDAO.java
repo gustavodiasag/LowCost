@@ -63,6 +63,28 @@ public class ForumDAO extends DAO {
 		return id;
 	}
 	
+	public String getTitle(int id) {
+		
+		String title = "";
+		
+		try {
+			
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			
+			String sql = "SELECT title FROM forum WHERE id = " + id;
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+			if(rs.next())
+				title = rs.getString("title");
+			
+			st.close();
+			
+		} catch (Exception e) { System.err.println(e.getMessage()); }
+		
+		return title;
+	}
+	
 	public List<List<String>> getAll(String orderBy) {
 		
 		List<List<String>> forums = new ArrayList<List<String>>();
@@ -71,7 +93,8 @@ public class ForumDAO extends DAO {
 			
 			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			
-			String sql = "SELECT title, comments FROM public.forum "
+			String sql = "SELECT title, comments, public.forum.id, login FROM public.forum "
+						 + "JOIN public.user ON public.forum.user_id_fk = public.user.id "
 						 + ((orderBy.isEmpty()) ? "" : "ORDER BY " + orderBy + " DESC");
 			
 			ResultSet rs = st.executeQuery(sql);
@@ -82,6 +105,8 @@ public class ForumDAO extends DAO {
 	        	
 	        	data.add(rs.getString("title"));
 	        	data.add(String.valueOf(rs.getInt("comments")));
+	        	data.add(String.valueOf(rs.getInt("id")));
+	        	data.add(rs.getString("login"));
 	        	
 	        	forums.add(data);
 	        }
@@ -91,6 +116,38 @@ public class ForumDAO extends DAO {
 		} catch (Exception e) { System.err.println(e.getMessage()); }
 		
 		return forums;
+	}
+	
+	public List<List<String>> getComments(int forumId) {
+		
+		List<List<String>> comments = new ArrayList<List<String>>();
+		
+		try {
+			
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			
+				String sql = "SELECT content, login FROM public.forum "
+							 + "JOIN public.comment ON public.forum.id = public.comment.forum_id_fk "
+							 + "JOIN public.user ON public.comment.user_id_fk = public.user.id "
+							 + "WHERE public.forum.id =" + forumId;
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+	        while(rs.next()) {
+	        	
+	        	List<String> data = new ArrayList<String>();
+	        	
+	        	data.add(rs.getString("content"));
+	        	data.add(rs.getString("login"));
+	        	
+	        	comments.add(data);
+	        }
+	        
+	        st.close();
+	        
+		} catch (Exception e) { System.err.println(e.getMessage()); }
+		
+		return comments;
 	}
 
 	public boolean update(Forum forum) {
@@ -113,6 +170,27 @@ public class ForumDAO extends DAO {
 
 		} catch (SQLException e) { throw new RuntimeException(e); }
 
+		return status;
+	}
+	
+	public boolean updateComments(int forumId) {
+		
+		boolean status = false;
+		
+		try {
+			
+			String sql = "UPDATE public.forum SET comments = comments + 1 "
+						 + "WHERE id = " + forumId;
+			
+			PreparedStatement st = connection.prepareStatement(sql);
+			
+			st.executeUpdate();
+			st.close();
+			
+			status = true;
+			
+		} catch (SQLException e) { throw new RuntimeException(e); }
+		
 		return status;
 	}
 

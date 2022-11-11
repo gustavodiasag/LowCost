@@ -21,40 +21,36 @@ public class CommentService {
 	
 	private CommentDAO commentDao = new CommentDAO();
 	private UserDAO userDao = new UserDAO();
-	private ForumDAO forumDao = new ForumDAO();
 	
 	public CommentService() {}
 	
-	public boolean insert(Request request, Response response, int companyId, int serviceId) {
+	public boolean insertService(Request request, Response response, int companyId, int serviceId) {
 		
 		String content = request.queryParams("comment");
 		LocalDateTime submission = LocalDateTime.now();
 		int userId = userDao.getId((String)request.session().raw().getAttribute("login"));
 		
-		if (request.queryParams("forum") == null) {
+		final DocumentSentiment documentSentiment = client.analyzeSentiment(content);
+    	
+        SentimentConfidenceScores scores = documentSentiment.getConfidenceScores();
 		
-			
-			final DocumentSentiment documentSentiment = client.analyzeSentiment(content);
-        	
-	        SentimentConfidenceScores scores = documentSentiment.getConfidenceScores();
-			
-			Comment comment = new Comment(content, submission, serviceId, 0, userId,
-							 			 ((float)scores.getPositive() - (float)scores.getNegative()/(float)content.length()),
-							 			 companyId);
-			
-			return commentDao.insertCommentService(comment);
-		}
-			
-//		else if (request.queryParams("description") == null) {
-//			
-//			int forumId = forumDao.get((String)request.queryParams("forum"));
-//			
-//			Comment comment = new Comment(content, submission, 0, forumId, userId, 0, 0);
-//			
-//			return commentDao.insertCommentForum(comment);
-//		}
+		Comment comment = new Comment(content, submission, serviceId, 0, userId,
+						 			 ((float)scores.getPositive() - (float)scores.getNegative()/(float)content.length()),
+						 			 companyId);
 		
-		return false;
+		return commentDao.insertCommentService(comment);
+	}
+	
+	public boolean insertForum(Request request, Response response) {
+		
+		String content = request.queryParams("comment");
+		LocalDateTime submission = LocalDateTime.now();
+		int userId = userDao.getId((String)request.session().raw().getAttribute("login"));
+		int forumId = Integer.parseInt(request.params(":id"));
+		
+		Comment comment = new Comment(content, submission, 0, forumId, userId, 0, 0);
+		
+		return commentDao.insertCommentForum(comment);
 	}
 
 	public boolean deleteCommentService(Request request, Response response) {
@@ -64,5 +60,12 @@ public class CommentService {
 		int companyId = Integer.parseInt(request.params(":companyId"));
 		
 		return commentDao.deleteCommentService(userId, serviceId, companyId);
+	}
+	
+	public boolean deleteCommentForum(Request request, Response response) {
+		
+		int forumId = Integer.parseInt(request.params(":id"));
+		
+		return commentDao.deleteCommentForum(forumId);
 	}
 }

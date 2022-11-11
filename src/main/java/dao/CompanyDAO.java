@@ -3,6 +3,8 @@ package dao;
 import model.Company;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CompanyDAO extends DAO {
 	
@@ -55,6 +57,36 @@ public class CompanyDAO extends DAO {
 		} catch (Exception e) { System.err.println(e.getMessage()); }
 
 		return id;
+	}
+	
+	public List<List<String>> getRanking() {
+		
+		List<List<String>> companies = new ArrayList<List<String>>();
+		
+		try {
+			
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			
+				String sql = "SELECT name, SUM(sentiment) AS sum FROM public.company "
+							 + "JOIN comment ON public.company.id = public.comment.company_id_fk "
+							 + "GROUP BY name ORDER BY sum DESC;";
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+	        while(rs.next()) {
+	        	
+	        	List<String> data = new ArrayList<String>();
+	        	
+	        	data.add(rs.getString("name"));
+	        	
+	        	companies.add(data);
+	        }
+	        
+	        st.close();
+	        
+		} catch (Exception e) { System.err.println(e.getMessage()); }
+		
+		return companies;
 	}
 
 	public boolean update(Company company) {

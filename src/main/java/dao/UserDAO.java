@@ -116,7 +116,7 @@ public class UserDAO extends DAO {
 		
 		try {
 			
-			String sql = "UPDATE \"public\".user SET contributions = "
+			String sql = "UPDATE public.user SET contributions = "
 						 + user.getContributions() + " WHERE id = "
 						 + user.getId();
 			

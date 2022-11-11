@@ -12,7 +12,7 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,7 +30,7 @@
 
           <div class="col-12 col-sm-12 col-md-8 col-lg-10 memu_area">
             <nav class="navbar navbar-expand-md fixed-top menu-area" style="color: #3c3250">
-                  <a class="navbar-brand" href="#"><img src="../images/logo.png" class="logo dar_espaco"></a>
+                  <a class="navbar-brand" href="/"><img src="/images/logo.png" class="logo dar_espaco"></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                 aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <img src="../images/more.png" class="more">
@@ -53,7 +53,7 @@
                 <a class="flex-sm-fill text-sm-center nav-link" href="/about/">Sobre</a>
                 <a href="/profile/">
                   <div class="perfil">
-                    <img src="../images/profile.png" class="perfil">
+                    <img src="/images/profile.png" class="perfil">
                   </div>
                 </a>
               </div>
@@ -69,90 +69,13 @@
       <table>
         <thead>
           <tr>
-            <th>Nome do Serviço</th>
-            <th>Preço</th>
+            <th>Ranking</th>
             <th>Empresa</th>
           </tr>
         </thead>
         <tbody id="tabuela">
-        <tr>
-            <td>Seguro automóvel</td>
-            <td> R$ 22.5</td>
-            <td>Bradesco Seguros</td>
-        </tr>
-              
-        <tr>
-            <td>Plano dental</td>
-            <td> R$ 80.99</td>
-            <td>Bradesco Seguros</td>
-        </td>
-              
-        <tr>
-            <td>Plano de Saúde</td>
-            <td> R$ 127.88</td>
-            <td>Bradesco Seguros</td>
-        </tr>
-              
-        <tr>
-            <td>Energia</td>
-            <td> R$ 200</td>
-            <td>CEMIG</td>
-        </tr>
-              
-        <tr>
-            <td>Energia</td>
-            <td> R$ 127.5</td>
-            <td>CEMIG</td>
-        </tr>
-              
-        <tr>
-            <td>Internet 100 megas</td>
-            <td> R$ 30</td>
-            <td>CLARO</td>
-        </tr>
-              
-        <tr>
-            <td>Telefone fixo</td>
-            <td> R$ 29.9</td>
-            <td>CLARO</td>
-        </tr>
-              
-        <tr>
-            <td>Televisão</td>
-            <td> R$ 49.9</td>
-            <td>CLARO</td>
-        </tr>
-              
-        <tr>
-            <td>40 megas celular</td>
-            <td> R$ 29.9</td>
-            <td>CLARO</td>
-        </tr>
-              
-        <tr>
-            <td>Água</td>
-            <td> R$ 40</td>
-            <td>Copasa</td>
-        </tr>
-              
-        <tr>
-            <td>Internet 100 megas</td>
-            <td> R$ 89.99</td>
-            <td>GVT</td>
-        </tr>
-              
-        <tr>
-            <td>Assinatura</td>
-            <td> R$ 10</td>
-            <td>Netflix</td>
-        </tr>
-              
-        <tr>
-            <td>Assinatura</td>
-            <td> R$ 8.99</td>
-            <td>Spotify</td>
-        </tr>
-              </tbody>
+        	COMPANIES
+		</tbody>
       </table>
     </div>
   </main>
@@ -197,6 +120,6 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    <script src="../scripts/main.js"></script>
+    <script src="/scripts/main.js"></script>
   </body>
 </html>

@@ -30,7 +30,7 @@
 
           <div class="col-12 col-sm-12 col-md-8 col-lg-10 memu_area">
             <nav class="navbar navbar-expand-md fixed-top menu-area" style="color: #3c3250">
-                  <a class="navbar-brand" href="#"><img src="/images/logo.png" class="logo dar_espaco"></a>
+                  <a class="navbar-brand" href="/"><img src="/images/logo.png" class="logo dar_espaco"></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                 aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <img src="/images/more.png" class="more">
@@ -64,7 +64,6 @@
     </div>
   </header>
 <main class="container">
-    <div class="threads">
       <ol> 
 		FORUMS
 	  </ol>
@@ -73,7 +72,6 @@
     <textarea required name="name" rows="2" cols="40"></textarea>
     <br>
 	<input class="btn botao-padrao" type="submit" value="Adicionar Tópico" class="button">
-    </div>
     </form>
   </main>
     

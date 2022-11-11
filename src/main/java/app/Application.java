@@ -36,7 +36,6 @@ public class Application {
 				return "";
 				
 			} else
-				
 				return engine.render(new ModelAndView(model, "public/templates/profile.vm"));
 		});
 		
@@ -49,34 +48,19 @@ public class Application {
 				return "";
 				
 			} else
-				
 				return engine.render(new ModelAndView(model, "public/templates/signup.vm"));
 		});
 		
-		get("/services/", (request, response) -> {
-			
-			response.header("Content-Type", "text/html");
-		    response.header("Content-Encoding", "UTF-8");
-		    
-		    return serviceService.makeList(""); 
-		});
+		get("/services/", (request, response) -> serviceService.makeList(""));
 		
 		get("/submissions/", (request, response) -> {
 			
-			if (request.session().raw().getAttribute("login") != null) {
-				
-				response.header("Content-Type", "text/html");
-				response.header("Content-Encoding", "UTF-8");
-				
+			if (request.session().raw().getAttribute("login") != null)
 				return serviceService.makeListSubmissions((String)request.session().raw().getAttribute("login"));
 
-			} else {
+			response.redirect("/profile/");
 				
-				response.redirect("/profile/");
-				
-				return "";
-			}
-			
+			return "";
 		});
 		
 		get("/submissions/delete/:serviceId/:companyId", (request, response) -> {
@@ -92,7 +76,23 @@ public class Application {
 		
 		get("/forum/", (request, response)-> {
 			
-			return forumService.makeList("comments");
+			if (request.session().raw().getAttribute("login") != null)
+				return forumService.makeList(request, "comments");
+			
+			response.redirect("/profile/");
+			
+			return "";
+			
+		});
+		
+		get("/forum/delete/:id", (request, response) -> {
+			
+			forumService.delete(request, response);
+			commentService.deleteCommentForum(request, response);
+			
+			response.redirect("/forum/");
+			
+			return "";
 		});
 		
 		get("/forum/insert/", (request, response) -> {
@@ -101,7 +101,7 @@ public class Application {
 				
 				forumService.insert(request, response);
 				
-				return forumService.makeList("comments");
+				return forumService.makeList(request, "comments");
 				
 			} else {
 				
@@ -110,25 +110,32 @@ public class Application {
 				return "";
 			}
 		});
+		
+		get("/forum/:id", (request, response) -> forumService.showComments(request, response));
+		
+		get("/forum/comment/insert/:id", (request, response) -> {
+			
+			commentService.insertForum(request, response);
+			forumService.updateComments(request, response);
+			
+			return forumService.showComments(request, response);
+		});
+		
+		get("/test/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/add.vm")));
 		
 		get("/about/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/about.vm")));
 		
 		get("/add/", (request, response) -> {
 			
-			if (request.session().raw().getAttribute("login") != null) {
-				
+			if (request.session().raw().getAttribute("login") != null)
 				return engine.render(new ModelAndView(model, "public/templates/add.vm"));
 				
-			} else {
+			response.redirect("/profile/");
 				
-				response.redirect("/profile/");
-				
-				return "";
-				
-			}
+			return "";
 		});
 		
-		get("/tables/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/tables.vm")));
+		get("/tables/", (request, response) -> companyService.showRanking());
 		
 		post("/profile/", (request, response) -> {
 			
@@ -154,20 +161,12 @@ public class Application {
 				
 				request.session().raw().setAttribute("login", user);				
 				response.redirect("/");
-				
-			} else
-				System.out.println("User could not be inserted to the database");
+			}
 			
 			return "";
 		});
 		
-		post("/services/", (request, response) -> {
-			
-			response.header("Content-Type", "text/html");
-		    response.header("Content-Encoding", "UTF-8");
-		    
-		    return serviceService.makeList(request.queryParams("search"));
-		});
+		post("/services/", (request, response) -> serviceService.makeList(request.queryParams("search")));
 		
 		post("/add/", (request, response) -> {
 			
@@ -176,7 +175,7 @@ public class Application {
 			int companyId = companyService.insert(request, response);
 			int serviceId = serviceService.insert(request, response);
 			
-			commentService.insert(request, response, companyId, serviceId);
+			commentService.insertService(request, response, companyId, serviceId);
 			offerService.insert(companyId, serviceId);
 			
 			response.redirect("/add/");

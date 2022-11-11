@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="../styles/signup.css"/>
+    
+  </head>
+  
+  <body>
+    <div class="row justify-content-center" style="background-color:#41a87b; border-radius: 10px; width: 310px;">
+      <a class="row-brand" href="/"><img src="../images/whitelogo.png" alt="" width="262" height="121" style="margin-left: 24px;"></a>
+          <div id="form" style="position: flex; margin-left: 30px;">
+          <h2  style="color: white; margin-left: 18px; font-family: 'Open Sans'; font-style: bold; font-weight: 600; font-size: 18px;  line-height: 18px; letter-spacing: 0.75px;  text-transform: uppercase; 	letter-spacing: 2px;">Atualizar usuário</h2>
+          
+            <form data-form="create" action="/signup/" method="post">
+              <div class="input-group">
+                <input data-create="name" class="input" type="text" id="nome" name="name" placeholder="Nome" required="" style="border-radius: 5px; border-color: white; margin-left: 20px;">
+              </div>
+
+              <div class="input-group">
+                <input data-create="login" class="input" type="text" id="login" name="login" placeholder="Login" required="" style="border-radius: 5px; border-color: white;margin-left: 20px;">
+              </div>
+
+              <div class="input-group">
+                <input data-create="email" class="input" type="email" id="email" name="email" placeholder="E-mail" required="" style="border-radius: 5px; border-color: white;margin-left: 20px;">
+              </div>
+
+              <div class="input-group">
+                <input data-create="password" class="input" type="password" id="password" name="password" placeholder="Senha" required="" style="border-radius: 5px; border-color: white;margin-left: 20px;">
+              </div>
+
+              <div class="button-wrapper">
+              	<input type="submit" value="Atualizar" class="button" style="border-radius: 5px !important; border-color: #a2d376 !important; margin-left: 50px;">
+              </div>
+            </form>
+          </div>
+        </div>
+    
+    
+</body>
+</html>

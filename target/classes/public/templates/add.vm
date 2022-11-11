@@ -12,17 +12,15 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/style.css"/>
+    
  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css/"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>LowCost</title>
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css"
-/>
+  
   </head>
   <body>
     <header>
@@ -33,7 +31,7 @@
 
           <div class="col-12 col-sm-12 col-md-8 col-lg-10 memu_area">
             <nav class="navbar navbar-expand-md fixed-top menu-area" style="color: #3c3250">
-                  <a class="navbar-brand" href="#"><img src="../images/logo.png" class="logo dar_espaco"></a>
+                  <a class="navbar-brand" href="/"><img src="../images/logo.png" class="logo dar_espaco"></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                 aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <img src="../images/more.png" class="more">
@@ -75,40 +73,45 @@
     <h1> Cadastrar serviço </h1>
     <form onsubmit="" action="/add/" method="post">
       <label for="empresa">Empresa que ofereçe o serviço</label>
-      <input
+      <br>
+      <input class = "area"
         required
         name="company"
         id="empresa"
         placeholder="Netflix, Claro, VIVO, CEMIG..."
       />
-
+		<br>
       <label for="servico">Serviço</label>
-      <input
+      <br>
+      <input class = "area"
         required
         name="description"
         id="servico"
         placeholder="Internet, plano de TV, água, luz..."
       />
-
+		<br>
       <label for="preco">Preço</label>
-      <input
+      <br>
+      <input class = "area"
         required
         name="price"
         id="preco"
         placeholder="Mensal: 30.00, 49.99..."
       />
-
-      <label for="notas">Observações (opcional)</label>
-      <textarea
+		<br>
+      <label for="notas">Observações</label>
+      <br>
+      <textarea class = "area maior" 
         name="comment"
         id="notas"
         placeholder="Liguei pra o número deles e depois de reclamar bastante deixaram eu diminuir pra esse preço sem perder nada."
       ></textarea>
-
-      <input type="submit" value="Enviar"/>
+      <br>
+      
+		<button class="btn botao-padrao" type="submit" id="btn-forum">Enviar</button>
     </form>
   </main>
-    
+[    
     <footer>
        <footer>
     
@@ -130,9 +133,9 @@
         </div>
 		</div>
     	</div>
-</div>
+		</div>
  </footer>
-
+ 
    <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

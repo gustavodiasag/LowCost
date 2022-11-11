@@ -18,6 +18,7 @@
 
     h1, h2{
         margin-bottom: 25px;
+        margin-top: 25px;
     }
 
     .alinha{
@@ -344,4 +345,53 @@ footer{
 
 .sistema .container > button {
   margin-top: 1rem;
+}
+
+.text{
+  margin-top: 50px;
+  border: 0.5px solid #a2d376; 
+  outline: none;
+}
+
+.user{
+  color: #3c3250;
+  font-weight: bold;
+}
+
+.list-group-item{
+  margin: none;
+  width: 750px;
+  padding: auto;
+  margin-top: 15px;
+}
+
+.logout{
+  width: 35px;
+  margin-bottom: 15px;
+}
+
+.profile {
+  width: 600px;
+  border: 0.5px solid #3c3250; 
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.profile .negrito{
+  color: #3c3250;
+}
+
+.area{
+	background-color: #dddddd;
+	color: #3c3250;
+	border: 2px solid transparent; 
+	margin-bottom: 25px;
+	border-radius: 5px;
+	width: 400px;
+	padding: 10px;
+}
+
+.maior{
+	width: 500px;
+	height: 100px;
 }
