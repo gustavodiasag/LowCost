@@ -1,5 +1,9 @@
 package service;
 
+import java.io.File;
+import java.util.List;
+import java.util.Scanner;
+
 import dao.UserDAO;
 import model.User;
 
@@ -9,6 +13,7 @@ import spark.Response;
 public class UserService {
 	
 	private UserDAO userDao = new UserDAO();
+	private String list;
 	
 	public UserService() {}
 	
@@ -45,5 +50,52 @@ public class UserService {
 		user.setContributions(user.getContributions() + 1);
 		
 		return userDao.updateContributions(user);
+	}
+	
+	public String showData(Request request, Response response) {
+		
+		list = "";
+		
+		File filename = new File("profile.vm");
+		
+		try {
+			
+			Scanner in = new Scanner(filename);
+			
+			while(in.hasNext())
+				list += in.nextLine() + "\n";
+			
+			in.close();
+			
+		} catch (Exception e) { System.out.println(e.getMessage()); }
+		
+		List<String> data = userDao.getData((String)request.session().raw().getAttribute("login"));
+		
+		String user = "";
+		
+		user += "    <div  class=\"container profile\">\n"
+				+ "      <div class=\"header\">\n"
+				+ "      <h1>Perfil de " + data.get(0) + "</span></h1>\n"
+				+ "    </div>\n"
+				+ "    <div class=\"detalhes\">\n"
+				+ "      <span class=\"negrito\">Quantidade de serviços: " + data.get(1) + "</span>\n"
+				+ "    </div>\n"
+				+ "    <div class=\"button\">\n"
+				+ "      <h3></h3>\n"
+				+ "		 <a href=\"/logout/\" class=\"btn botao-padrao\">Fazer logout</a>\n"
+				+ "		 <a href=\"/profile/delete/user/" + data.get(2) + "\" class=\"btn botao-padrao\">Remover conta</a>\n"
+				+ "    </div>\n"
+				+ "    </div>\n";
+		
+		list = list.replace("USER", user);
+		
+		return list;
+	}
+	
+	public boolean delete(Request request, Response response) {
+		
+		int userId = Integer.parseInt(request.params(":id"));
+		
+		return userDao.delete(userId);
 	}
 }

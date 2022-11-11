@@ -68,13 +68,6 @@ public class ForumService {
 		return list;
 	}
 	
-	public boolean delete(Request request, Response response) {
-		
-		int forumId = Integer.parseInt(request.params(":id"));
-		
-		return forumDao.delete(forumId);
-	}
-	
 	public String showComments(Request request, Response response) {
 		
 		int forumId = Integer.parseInt(request.params(":id"));
@@ -126,5 +119,19 @@ public class ForumService {
 		int forumId = Integer.parseInt(request.params(":id"));
 		
 		return forumDao.updateComments(forumId);
+	}
+	
+	public boolean delete(Request request, Response response) {
+		
+		int forumId = Integer.parseInt(request.params(":id"));
+		
+		return forumDao.delete(forumId);
+	}
+	
+	public boolean deleteFromUser(Request request, Response response) {
+		
+		int userId = Integer.parseInt(request.params(":id"));
+		
+		return forumDao.deleteFromUser(userId);
 	}
 }

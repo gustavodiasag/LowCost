@@ -129,7 +129,8 @@ public class ForumDAO extends DAO {
 				String sql = "SELECT content, login FROM public.forum "
 							 + "JOIN public.comment ON public.forum.id = public.comment.forum_id_fk "
 							 + "JOIN public.user ON public.comment.user_id_fk = public.user.id "
-							 + "WHERE public.forum.id =" + forumId;
+							 + "WHERE public.forum.id =" + forumId
+							 + "ORDER BY submission";
 			
 			ResultSet rs = st.executeQuery(sql);
 			
@@ -194,7 +195,7 @@ public class ForumDAO extends DAO {
 		return status;
 	}
 
-	public boolean delete(int id) {
+	public boolean delete(int forumId) {
 
 		boolean status = false;
 
@@ -202,13 +203,31 @@ public class ForumDAO extends DAO {
 
 			Statement st = connection.createStatement();
 
-			st.executeUpdate("DELETE FROM forum WHERE id = "  + id);
+			st.executeUpdate("DELETE FROM forum WHERE id = "  + forumId);
 			st.close();
 
 			status = true;
 
 		} catch (SQLException e) { throw new RuntimeException(e); }
 
+		return status;
+	}
+	
+	public boolean deleteFromUser(int userId) {
+		
+		boolean status = false;
+		
+		try {
+			
+			Statement st = connection.createStatement();
+			
+			st.executeUpdate("DELETE FROM forum WHERE user_id_fk = " + userId);
+			st.close();
+			
+			status = true;
+			
+		} catch(SQLException e) { throw new RuntimeException(e); }
+		
 		return status;
 	}
 }

@@ -183,4 +183,22 @@ public class CommentDAO extends DAO {
 		
 		return status;
 	}
+	
+	public boolean deleteFromUser(int userId) {
+		
+		boolean status = false;
+		
+		try {
+			
+			Statement st = connection.createStatement();
+			
+			st.executeUpdate("DELETE FROM public.comment WHERE user_id_fk = " + userId);
+			st.close();
+			
+			status = true;
+			
+		} catch (SQLException e) { throw new RuntimeException(e); }
+		
+		return status;
+	}
 }

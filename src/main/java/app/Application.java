@@ -22,27 +22,45 @@ public class Application {
 		staticFiles.location("/public");
 		
 		VelocityTemplateEngine engine = new VelocityTemplateEngine();
-		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		
 		get("/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/index.vm")));
 		
-		get("/profile/", (request, response)-> {
+		get("/profile/", (request, response) -> {
 			
-			if (request.session().raw().getAttribute("login") != null) {
+			if (request.session().raw().getAttribute("login") != null)
+				return userService.showData(request, response);
 				
-				response.redirect("/");
-				
-				return "";
-				
-			} else
-				return engine.render(new ModelAndView(model, "public/templates/profile.vm"));
+			response.redirect("/login/");
+			
+			return "";
+		});
+		
+		get("/profile/delete/user/:id", (request, response) -> {
+			
+			commentService.deleteFromUser(request, response);
+			forumService.deleteFromUser(request, response);
+			userService.delete(request, response);
+			
+			request.session().raw().removeAttribute("login");
+			response.redirect("/");
+			
+			return "";
+		});
+		
+		get("/login/", (request, response)-> engine.render(new ModelAndView(model, "public/templates/login.vm")));
+		
+		get("/logout/", (request, response) -> {
+			
+			request.session().raw().removeAttribute("login");
+			response.redirect("/");
+			
+			return "";
 		});
 		
 		get("/signup/", (request, response) -> {
 			
 			if (request.session().raw().getAttribute("login") != null) {
-				
 				response.redirect("/");
 				
 				return "";
@@ -58,7 +76,7 @@ public class Application {
 			if (request.session().raw().getAttribute("login") != null)
 				return serviceService.makeListSubmissions((String)request.session().raw().getAttribute("login"));
 
-			response.redirect("/profile/");
+			response.redirect("/login/");
 				
 			return "";
 		});
@@ -79,16 +97,15 @@ public class Application {
 			if (request.session().raw().getAttribute("login") != null)
 				return forumService.makeList(request, "comments");
 			
-			response.redirect("/profile/");
+			response.redirect("/login/");
 			
 			return "";
-			
 		});
 		
 		get("/forum/delete/:id", (request, response) -> {
 			
-			forumService.delete(request, response);
 			commentService.deleteCommentForum(request, response);
+			forumService.delete(request, response);
 			
 			response.redirect("/forum/");
 			
@@ -98,14 +115,12 @@ public class Application {
 		get("/forum/insert/", (request, response) -> {
 			
 			if (request.session().raw().getAttribute("login") != null) {
-				
 				forumService.insert(request, response);
 				
 				return forumService.makeList(request, "comments");
 				
 			} else {
-				
-				response.redirect("/profile/");
+				response.redirect("/login/");
 				
 				return "";
 			}
@@ -121,7 +136,7 @@ public class Application {
 			return forumService.showComments(request, response);
 		});
 		
-		get("/test/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/add.vm")));
+		get("/test/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/profile-singin.vm")));
 		
 		get("/about/", (request, response) -> engine.render(new ModelAndView(model, "public/templates/about.vm")));
 		
@@ -130,14 +145,14 @@ public class Application {
 			if (request.session().raw().getAttribute("login") != null)
 				return engine.render(new ModelAndView(model, "public/templates/add.vm"));
 				
-			response.redirect("/profile/");
+			response.redirect("/login/");
 				
 			return "";
 		});
 		
 		get("/tables/", (request, response) -> companyService.showRanking());
 		
-		post("/profile/", (request, response) -> {
+		post("/login/", (request, response) -> {
 			
 			if (userService.check(request, response)) {
 				
@@ -145,13 +160,10 @@ public class Application {
 				
 				request.session().raw().setAttribute("login", user);
 				response.redirect("/");
-				
-			} else
-				System.out.println("User not found in the database");
+			}
 			
 			return "";
 		});
-		
 		
 		post("/signup/", (request, response) -> {
 			

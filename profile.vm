@@ -12,7 +12,7 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../styles/style.css"/>
+    <link rel="stylesheet" href="/styles/style.css"/>
  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -31,10 +31,10 @@
 
           <div class="col-12 col-sm-12 col-md-8 col-lg-10 memu_area">
             <nav class="navbar navbar-expand-md fixed-top menu-area" style="color: #3c3250">
-                  <a class="navbar-brand" href="/"><img src="../images/logo.png" class="logo dar_espaco"></a>
+                  <a class="navbar-brand" href="/"><img src="/images/logo.png" class="logo dar_espaco"></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                 aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <img src="../images/more.png" class="more">
+                <img src="/images/more.png" class="more">
               </button>
               <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <a class="flex-sm-fill text-sm-center nav-link" href="/">Home</a>
@@ -54,7 +54,7 @@
                 <a class="flex-sm-fill text-sm-center nav-link" href="/about/">Sobre</a>
                 <a href="/profile/">
                   <div class="perfil">
-                    <img src="../images/profile.png" class="perfil">
+                    <img src="/images/profile.png" class="perfil">
                   </div>
                 </a>
               </div>
@@ -67,27 +67,8 @@
 
   <main class="container">
 
-    <a href="#"><img src="../images/log-out.png" class="logout"></a>
-    
-    <div  class="container profile">
-      <div class="header">
-
-      <h1>Perfil de </span></h1>
-    </div>
-
-    <div class="detalhes">
-
-      <span class="negrito">Quantidade de serviços: </span>
-  
-    </div>
-    <div class="button">
-      <h3>Deseja atualizar seus dados?</h3>
-      <button class="btn-pink btn" onclick="window.location.href='/update'">Atualizar</button>
-     <button class="btn-pink btn" onclick="window.location.href='#'">Deletar conta </button>
-    </div></div>
-    
-
-
+    <a href="#"><img src="/images/logout.png" class="logout"></a>
+	USER    
   </main>
 
  <footer>
@@ -128,6 +109,6 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    <script src="../scripts/main.js"></script>
+    <script src="/scripts/main.js"></script>
   </body>
 </html>

@@ -68,4 +68,11 @@ public class CommentService {
 		
 		return commentDao.deleteCommentForum(forumId);
 	}
+	
+	public boolean deleteFromUser(Request request, Response response) {
+		
+		int userId = Integer.parseInt(request.params(":id"));
+		
+		return commentDao.deleteFromUser(userId);
+	}
 }
